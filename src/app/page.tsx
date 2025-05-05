@@ -94,7 +94,7 @@ const translations: { [key in LanguageKey]: Translations } = {
         ? ["Personal Training", "Nutrition Plans", "Group Workouts"]
         : [],
     testimonials: (lang) => (lang === "en" ? "Testimonials" : ""),
-    clientStories: (lang) => (lang === "en" ? "Client Stories" : ""),
+    clientStories: (lang) => (lang === "en" ? "Our Success Stories" : ""),
     contact: (lang) => (lang === "en" ? "Contact" : ""),
     contactForm: (lang) => (lang === "en" ? "Contact Form" : ""),
     followUs: (lang) => (lang === "en" ? "Follow Us" : ""),
@@ -139,7 +139,7 @@ const translations: { [key in LanguageKey]: Translations } = {
         ? ["Kişisel Antrenman", "Beslenme Planları", "Grup Antrenmanları"]
         : [],
     testimonials: (lang) => (lang === "tr" ? "Referanslar" : ""),
-    clientStories: (lang) => (lang === "tr" ? "Müşteri Hikayeleri" : ""),
+    clientStories: (lang) => (lang === "tr" ? "Başarı Hikayelerimiz" : ""),
     contact: (lang) => (lang === "tr" ? "İletişim" : ""),
     contactForm: (lang) => (lang === "tr" ? "İletişim Formu" : ""),
     followUs: (lang) => (lang === "tr" ? "Bizi Takip Edin" : ""),
@@ -214,7 +214,10 @@ const stories = [
       lang === "en"
         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: "'The best investment I've ever made was in my health.'",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "'The best investment I've ever made was in my health."
+        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
   },
   {
     id: 2,
@@ -224,7 +227,10 @@ const stories = [
       lang === "en"
         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: "'I never thought I could feel this strong again!'",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "'The best investment I've ever made was in my health."
+        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
   },
   {
     id: 3,
@@ -234,7 +240,10 @@ const stories = [
       lang === "en"
         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: "'Consistency is key to long-term success.'",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "'The best investment I've ever made was in my health."
+        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
   },
   {
     id: 4,
@@ -244,7 +253,10 @@ const stories = [
       lang === "en"
         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: "'I didn't think I could push myself this hard!'",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "'The best investment I've ever made was in my health."
+        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
   },
   {
     id: 5,
@@ -254,7 +266,10 @@ const stories = [
       lang === "en"
         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: "'Hard work pays off - both in the gym and in life.'",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "'The best investment I've ever made was in my health."
+        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
   },
   {
     id: 6,
@@ -264,7 +279,10 @@ const stories = [
       lang === "en"
         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: "'I never imagined I'd feel this good about myself!'",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "'The best investment I've ever made was in my health."
+        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
   },
   {
     id: 7,
@@ -274,7 +292,10 @@ const stories = [
       lang === "en"
         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: "'Discipline is the key to any great accomplishment.'",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "'The best investment I've ever made was in my health."
+        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
   },
   {
     id: 8,
@@ -284,7 +305,10 @@ const stories = [
       lang === "en"
         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: "'Healthy habits are the foundation of lasting change.'",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "'The best investment I've ever made was in my health."
+        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
   },
 ];
 
@@ -317,7 +341,7 @@ export default function Home() {
           : "bg-[#f1f1f1] duration-200 transform transition-all"
       }`}
     >
-      <section id="header">
+      <section id="header" className="z-10">
         <div className="fixed min-w-full px-6 flex flex-row justify-between items-center">
           <div className="cursor-pointer" title="Abdullah Aşık">
             {theme === "dark" ? (
@@ -363,7 +387,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="hero">
+      <section id="hero" className="px-10 py-40 -mt-40">
         <div className="min-w-full min-h-screen flex flex-col md:flex-row items-center justify-between md:justify-between md:px-10 md:-my-4">
           <div className="">
             <Image
@@ -371,7 +395,7 @@ export default function Home() {
               alt="Abdullah Aşık Logo"
               width={850}
               height={850}
-              className=""
+              className="pointer-events-none"
               priority
             />
           </div>
@@ -433,7 +457,7 @@ export default function Home() {
         </span>
       </div>
 
-      <section id="About" className="px-6 md:px-10 py-20">
+      <section id="About" className="px-10 py-40">
         <div className="flex flex-col items-center justify-center">
           <h2
             className={` font-semibold text-2xl ${
@@ -476,9 +500,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="Private Lesson Packages">
+      <section id="Private Lesson Packages" className="px-10 py-40">
         <div className="">
-          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
+          <h2
+            className={`text-2xl md:text-3xl font-bold mb-12 text-center ${
+              theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+            }`}
+          >
             {currentTranslations.servicesTitle(language)}
           </h2>
 
@@ -512,10 +540,14 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="Testimonials" className="">
+      <section id="Testimonials" className="px-10 py-40">
         <div className="overflow-hidden">
-          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
-            Başarı Hikayeleri
+          <h2
+            className={`text-2xl md:text-3xl font-bold mb-12 text-center ${
+              theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+            }`}
+          >
+            {currentTranslations.clientStories(language)}
           </h2>
           <Swiper
             modules={[Navigation]}
@@ -536,7 +568,7 @@ export default function Home() {
             {stories.map((story, index) => (
               <SwiperSlide
                 key={index}
-                className={`p-6 rounded-xl shadow-lg ${
+                className={`p-6 rounded-xl shadow-lg cursor-pointer ${
                   theme === "dark"
                     ? "bg-[#171717] text-[#f1f1f1]"
                     : "border bg-[#f1f1f1] text-[#313131]"
@@ -552,16 +584,20 @@ export default function Home() {
                     {story.title}
                   </h3>
                 </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                <p
+                  className={`text-sm mb-4 ${
+                    theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+                  }`}
+                >
                   {story.description(language)}
                 </p>
-                <div className="bg-blue-100 dark:bg-blue-900/20 p-3 rounded-lg">
+                <div className="bg-blue-200 dark:bg-blue-900/20 p-3 rounded-lg">
                   <p
                     className={` ${
                       theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
                     }`}
                   >
-                    {story.quote}
+                    {story.quote(language)}
                   </p>
                 </div>
               </SwiperSlide>
@@ -569,19 +605,19 @@ export default function Home() {
           </Swiper>
         </div>
       </section>
-      <section id="contact">
+      <section id="contact" className="px-10 py-40">
         <div>
-          <form action="">
-            <div>
-              <h2>Get in touch</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                nihil officiis cum aperiam odio consequatur tempora fuga nisi
-                similique? Error dolor iste cum facere voluptate ut. Doloremque
-                odit quibusdam exercitationem?
-              </p>
-            </div>
-            <div>
+          <div>
+            <h2>{currentTranslations.contact(language)}</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+              nihil officiis cum aperiam odio consequatur tempora fuga nisi
+              similique? Error dolor iste cum facere voluptate ut. Doloremque
+              odit quibusdam exercitationem?
+            </p>
+          </div>
+          <form action="" className="flex flex-row items-center justify-center">
+            <div className="flex flex-col items-center justify-center">
               <input type="text" placeholder="Name" name="" />
               <input type="text" placeholder="E-mail" name="" />
               <textarea
@@ -590,14 +626,54 @@ export default function Home() {
                 id=""
                 placeholder="Your message"
               ></textarea>
+              <button>Gönder</button>
             </div>
-            <button>Gönder</button>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d796.6995826243066!2d35.34011228046565!3d36.990746734608095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15288f7fe6648457%3A0x5c0f0b57d6647b9c!2sMACFit%20Adana%20Optimum!5e0!3m2!1str!2str!4v1746143644042!5m2!1str!2str"
+              loading="lazy"
+            ></iframe>
           </form>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d796.6995826243066!2d35.34011228046565!3d36.990746734608095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15288f7fe6648457%3A0x5c0f0b57d6647b9c!2sMACFit%20Adana%20Optimum!5e0!3m2!1str!2str!4v1746143644042!5m2!1str!2str"
-            loading="lazy"
-          ></iframe>
         </div>
+      </section>
+      <section id="footer" className="px-10 py-4">
+        <footer
+          className={`${
+            theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+          }`}
+        >
+          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
+            {currentTranslations.title(language)}
+          </h2>
+          <div className="flex flex-col md:flex-row justify-between md:gap-10 md:items-center py-20">
+            <div className="flex flex-col items-center">
+              <h3>Paketler</h3>
+              <span>Tek Ders</span>
+              <span>12 Ders</span>
+              <span>24 Ders</span>
+              <span>36 Ders</span>
+              <span>Uzaktan Eğitim</span>
+            </div>
+            <div>
+              <h3>Referanslar</h3>
+              <span>Başarı Hikayeleri</span>
+            </div>
+            <div>
+              <h3>İletişim</h3>
+              {/* <span>{currentTranslations.contactInfo(language)}</span>
+              <span>{currentTranslations.phone(language)} 123-456-7890</span>
+              <span>{currentTranslations.emailLabel(language)} */}
+            </div>
+            <div>
+              <h3>Beni Takip Et</h3>
+              <span>Instagram</span>
+              <span>Tiktok</span>
+              <span>Twitter</span>
+            </div>
+          </div>
+          <div className="justify-center flex items-center">
+            <span>&copy; 2025</span>
+          </div>
+        </footer>
       </section>
     </div>
   );
