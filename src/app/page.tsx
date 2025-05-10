@@ -43,10 +43,16 @@ type Translations = {
   testimonials: (language: LanguageKey) => string;
   clientStories: (language: LanguageKey) => string;
   contact: (language: LanguageKey) => string;
-  contactForm: (language: LanguageKey) => string;
+  contactText: (language: LanguageKey) => string;
+  pName: (language: LanguageKey) => string;
+  pEmail: (language: LanguageKey) => string;
+  pPhone: (language: LanguageKey) => string;
+  pMessage: (language: LanguageKey) => string;
+  pSubject: (language: LanguageKey) => string;
   followUs: (language: LanguageKey) => string;
   copyright: (language: LanguageKey) => string;
   scrollingText: (language: LanguageKey) => string;
+  references: (language: LanguageKey) => string;
 };
 
 type Service = {
@@ -95,13 +101,22 @@ const translations: { [key in LanguageKey]: Translations } = {
         : [],
     testimonials: (lang) => (lang === "en" ? "Testimonials" : ""),
     clientStories: (lang) => (lang === "en" ? "Our Success Stories" : ""),
-    contact: (lang) => (lang === "en" ? "Contact" : ""),
-    contactForm: (lang) => (lang === "en" ? "Contact Form" : ""),
-    followUs: (lang) => (lang === "en" ? "Follow Us" : ""),
+    contact: (lang) => (lang === "en" ? "Get In Touch" : ""),
+    contactText: (lang) =>
+      lang === "en"
+        ? "The change you dream of is just a message away. I am here for you; let's start together."
+        : "",
+    pName: (lang) => (lang === "en" ? "Name" : ""),
+    pEmail: (lang) => (lang === "en" ? "Email" : ""),
+    pPhone: (lang) => (lang === "en" ? "Phone" : ""),
+    pMessage: (lang) => (lang === "en" ? "Your Message" : ""),
+    pSubject: (lang) => (lang === "en" ? "Send" : ""),
+    followUs: (lang) => (lang === "en" ? "Follow Me" : ""),
     copyright: (lang) =>
       lang === "en" ? "© 2025 Created by Fatih Karaşoğlu." : "",
     scrollingText: (lang) =>
       lang === "en" ? "scroll down / use arrow down" : "",
+    references: (lang) => (lang === "en" ? "References" : ""),
   },
   tr: {
     semititle: (lang) => (lang === "tr" ? "Kişisel Antrenör" : ""),
@@ -121,7 +136,7 @@ const translations: { [key in LanguageKey]: Translations } = {
     mstText2: (lang) =>
       lang === "tr" ? "NASM Sertifikalı Kişisel Eğitim" : "",
     mstText3: (lang) => (lang === "tr" ? "MAC Akademi" : ""),
-    mttText: (lang) => (lang === "tr" ? "Eğitim Tekniklerim" : ""),
+    mttText: (lang) => (lang === "tr" ? "Antrenman Tekniklerim" : ""),
     mttText1: (lang) => (lang === "tr" ? "Esneklik Antrenmanı" : ""),
     mttText2: (lang) => (lang === "tr" ? "Kuvvet Antrenmanı" : ""),
     mttText3: (lang) => (lang === "tr" ? "Karın & Tüm Vücut Antrenmanı" : ""),
@@ -140,13 +155,22 @@ const translations: { [key in LanguageKey]: Translations } = {
         : [],
     testimonials: (lang) => (lang === "tr" ? "Referanslar" : ""),
     clientStories: (lang) => (lang === "tr" ? "Başarı Hikayelerimiz" : ""),
-    contact: (lang) => (lang === "tr" ? "İletişim" : ""),
-    contactForm: (lang) => (lang === "tr" ? "İletişim Formu" : ""),
-    followUs: (lang) => (lang === "tr" ? "Bizi Takip Edin" : ""),
+    contact: (lang) => (lang === "tr" ? "İletişime Geçelim" : ""),
+    contactText: (lang) =>
+      lang === "tr"
+        ? "Hayal ettiğin değişim sadece bir mesaj uzağında. Sizin için buradayım; birlikte başlayalım."
+        : "",
+    pName: (lang) => (lang === "tr" ? "Ad" : ""),
+    pEmail: (lang) => (lang === "tr" ? "E-posta" : ""),
+    pPhone: (lang) => (lang === "tr" ? "Telefon" : ""),
+    pMessage: (lang) => (lang === "tr" ? "Mesajınız" : ""),
+    pSubject: (lang) => (lang === "tr" ? "Gönder" : ""),
+    followUs: (lang) => (lang === "tr" ? "Beni Takip Edin" : ""),
     copyright: (lang) =>
       lang === "tr" ? "© 2025 Fatih Karaşoğlu tarafından oluşturuldu." : "",
     scrollingText: (lang) =>
       lang === "tr" ? "Aşağı kaydır / Aşağı okunu kullan" : "",
+    references: (lang) => (lang === "tr" ? "Referanslar" : ""),
   },
 };
 
@@ -331,6 +355,20 @@ export default function Home() {
     }
   };
 
+  const handleGetInTouch = () => {
+    const element = document.getElementById("contact");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleReferences = () => {
+    const element = document.getElementById("Testimonials");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const currentTranslations = translations[language];
 
   return (
@@ -342,7 +380,7 @@ export default function Home() {
       }`}
     >
       <section id="header" className="z-10">
-        <div className="fixed min-w-full px-6 flex flex-row justify-between items-center">
+        <div className="fixed min-w-full md:px-6 flex flex-row justify-between items-center">
           <div className="cursor-pointer" title="Abdullah Aşık">
             {theme === "dark" ? (
               <Image
@@ -387,8 +425,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="hero" className="px-10 py-40 -mt-40">
-        <div className="min-w-full min-h-screen flex flex-col md:flex-row items-center justify-between md:justify-between md:px-10 md:-my-4">
+      <section id="hero" className="relative px-10 py-10">
+        <div className="min-w-full min-h-auto flex flex-col md:flex-row items-center md:-mt-16">
           <div className="">
             <Image
               src={main}
@@ -401,22 +439,18 @@ export default function Home() {
           </div>
           <div className="flex flex-col items-center justify-center md:items-start text-center md:text-left">
             <h2
-              className={`text-2xl md:text-3xl font-bold ${
+              className={`text-xl md:text-2xl font-bold ${
                 theme === "dark" ? "text-white" : "text-gray-800"
               }`}
             >
-              <span className="text-blue-500 dark:text-blue-400">
-                {currentTranslations.semititle(language)}
-              </span>
+              <span>{currentTranslations.semititle(language)}</span>
             </h2>
             <h1
               className={`text-4xl md:text-6xl font-bold ${
                 theme === "dark" ? "text-white" : "text-gray-800"
               }`}
             >
-              <span className="text-blue-500 dark:text-blue-400">
-                {currentTranslations.title(language)}
-              </span>
+              <span>{currentTranslations.title(language)}</span>
             </h1>
             <p
               className={`text-base md:text-xl mt-4 ${
@@ -425,14 +459,17 @@ export default function Home() {
             >
               {currentTranslations.heroText(language)}
             </p>
-            <button className="bg-blue-500 hover:bg-blue-600 mt-4 cursor-pointer text-[#f1f1f1] px-6 py-3 rounded-lg shadow-xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto">
+            <button
+              onClick={handleGetInTouch}
+              className="bg-[#e92931] mt-4 font-bold cursor-pointer text-[#f1f1f1] px-6 py-3 rounded-lg shadow-xl transition-all duration-300 transform hover:scale-105 w-full md:w-auto"
+            >
               {currentTranslations.getInTouch(language)}
             </button>
           </div>
         </div>
       </section>
 
-      <div className="w-full h-auto flex flex-col items-center justify-center md:-my-10">
+      <div className="w-full h-auto flex flex-col items-center justify-center">
         <span
           className={`${
             theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
@@ -457,7 +494,7 @@ export default function Home() {
         </span>
       </div>
 
-      <section id="About" className="px-10 py-40">
+      <section id="About" className="px-10 py-20">
         <div className="flex flex-col items-center justify-center">
           <h2
             className={` font-semibold text-2xl ${
@@ -467,32 +504,40 @@ export default function Home() {
             {currentTranslations.aboutMe(language)}
           </h2>
           <p
-            className={`py-4 text-center ${
+            className={`py-4 px-1 text-center ${
               theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
             }`}
           >
             {currentTranslations.aboutMeText(language)}
           </p>
           <div
-            className={`flex flex-col md:flex-row items-center justify-around w-full py-5`}
+            className={`flex flex-col md:flex-row items-start justify-start md:justify-around w-full py-5 mt-10`}
           >
             <div
-              className={`flex flex-col justify-center ${
+              className={`flex flex-col justify-center py-6 ${
                 theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
               }`}
             >
-              <h4>{currentTranslations.mstText(language)}</h4>
-              <span>🌟{currentTranslations.mstText1(language)}</span>
+              <h3 className="text-xl">
+                {currentTranslations.mstText(language)}
+              </h3>
+              <span className="mt-2">
+                🌟{currentTranslations.mstText1(language)}
+              </span>
               <span>🌟{currentTranslations.mstText2(language)}</span>
               <span>🌟{currentTranslations.mstText3(language)}</span>
             </div>
             <div
-              className={`flex flex-col justify-center ${
+              className={`flex flex-col justify-center py-6 ${
                 theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
               }`}
             >
-              <h5>{currentTranslations.mttText(language)}</h5>
-              <span>💪{currentTranslations.mttText1(language)}</span>
+              <h3 className="text-xl">
+                {currentTranslations.mttText(language)}
+              </h3>
+              <span className="mt-2">
+                💪{currentTranslations.mttText1(language)}
+              </span>
               <span>💪{currentTranslations.mttText2(language)}</span>
               <span>💪{currentTranslations.mttText3(language)}</span>
             </div>
@@ -500,12 +545,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="Private Lesson Packages" className="px-10 py-40">
+      <section
+        id="Private Lesson Packages"
+        className={`px-10 py-20 ${
+          theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+        }`}
+      >
         <div className="">
           <h2
-            className={`text-2xl md:text-3xl font-bold mb-12 text-center ${
-              theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
-            }`}
+            className={`text-2xl md:text-2xl font-semibold mb-12 text-center`}
           >
             {currentTranslations.servicesTitle(language)}
           </h2>
@@ -515,23 +563,19 @@ export default function Home() {
               <div
                 key={service.id}
                 className={`p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 shadow-lg ${
-                  theme === "dark"
-                    ? "bg-[#171717] text-[#f1f1f1]"
-                    : "border bg-[#f1f1f1] text-[#313131]"
+                  theme === "dark" ? "bg-[#171717]" : "bg-[#f1f1f1]"
                 }`}
                 aria-label={`Service: ${service.title(language)}`}
               >
                 <div className="flex items-center justify-between mb-4">
                   {service.icon}
-                  <span className="text-lg md:text-xl font-semibold">
+                  <span className="text-lg md:text-xl font-semibold italic">
                     {service.title(language)}
                   </span>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {service.description(language)}
-                </p>
+                <p className="mb-4">{service.description(language)}</p>
                 <div className="border-t pt-1 mt-4">
-                  <p className="text-lg md:text-xl font-bold text-blue-500 dark:text-blue-400">
+                  <p className="text-lg md:text-xl font-bold text-blue-500 dark:text-blue-400 italic">
                     {service.price}
                   </p>
                 </div>
@@ -540,10 +584,11 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="Testimonials" className="px-10 py-40">
+
+      <section id="Testimonials" className="px-10 py-20">
         <div className="overflow-hidden">
           <h2
-            className={`text-2xl md:text-3xl font-bold mb-12 text-center ${
+            className={`text-2xl md:text-2xl font-semibold py-6 text-center ${
               theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
             }`}
           >
@@ -605,69 +650,144 @@ export default function Home() {
           </Swiper>
         </div>
       </section>
-      <section id="contact" className="px-10 py-40">
+
+      <section
+        id="contact"
+        className={`px-10 py-20 ${
+          theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+        }`}
+      >
         <div>
-          <div>
-            <h2>{currentTranslations.contact(language)}</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-              nihil officiis cum aperiam odio consequatur tempora fuga nisi
-              similique? Error dolor iste cum facere voluptate ut. Doloremque
-              odit quibusdam exercitationem?
+          <div className="py-10 flex flex-col justify-center items-center">
+            <h2 className="text-2xl font-semibold py-2">
+              {currentTranslations.contact(language)}
+            </h2>
+            <p className="text-center">
+              {currentTranslations.contactText(language)}
             </p>
           </div>
-          <form action="" className="flex flex-row items-center justify-center">
-            <div className="flex flex-col items-center justify-center">
-              <input type="text" placeholder="Name" name="" />
-              <input type="text" placeholder="E-mail" name="" />
+          <form
+            action=""
+            className="flex flex-col md:flex-row items-center justify-center"
+          >
+            <div className="w-full md:w-1/2 flex flex-col items-center justify-center">
+              <input
+                type="text"
+                placeholder={currentTranslations.pName(language)}
+                name=""
+                className={`w-full p-2 ${
+                  theme === "dark"
+                    ? "border-b border-[#f1f1f1] focus:outline-blue-500"
+                    : "border-b border-[#313131] focus:outline-blue-500"
+                }`}
+              />
+              <input
+                type="text"
+                placeholder={currentTranslations.pEmail(language)}
+                name=""
+                className={`w-full p-2 ${
+                  theme === "dark"
+                    ? "border-b border-[#f1f1f1] focus:outline-blue-500"
+                    : "border-b border-[#313131] focus:outline-blue-500"
+                }`}
+              />
+              <input
+                type="tel"
+                placeholder={currentTranslations.pPhone(language)}
+                name=""
+                className={`w-full p-2 ${
+                  theme === "dark"
+                    ? "border-b border-[#f1f1f1] focus:outline-blue-500"
+                    : "border-b border-[#313131] focus:outline-blue-500"
+                }`}
+              />
               <textarea
-                className=""
+                className={`w-full p-2 mt-2 ${
+                  theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+                }`}
                 name=""
                 id=""
-                placeholder="Your message"
+                placeholder={currentTranslations.pMessage(language)}
               ></textarea>
-              <button>Gönder</button>
+              <button
+                type="submit"
+                className="bg-blue-500 text-[#f1f1f1] cursor-pointer mt-2 p-2 w-full hover:bg-blue-600"
+              >
+                {currentTranslations.pSubject(language)}
+              </button>
             </div>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d796.6995826243066!2d35.34011228046565!3d36.990746734608095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15288f7fe6648457%3A0x5c0f0b57d6647b9c!2sMACFit%20Adana%20Optimum!5e0!3m2!1str!2str!4v1746143644042!5m2!1str!2str"
-              loading="lazy"
-            ></iframe>
+            <div className="md:w-1/2 h-full flex items-center justify-center">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d796.6995826243066!2d35.34011228046565!3d36.990746734608095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15288f7fe6648457%3A0x5c0f0b57d6647b9c!2sMACFit%20Adana%20Optimum!5e0!3m2!1str!2str!4v1746143644042!5m2!1str!2str"
+                loading="eager"
+                className="min-h-[275px] min-w-full rounded-md p-2"
+              ></iframe>
+            </div>
           </form>
         </div>
       </section>
+
       <section id="footer" className="px-10 py-4">
         <footer
           className={`${
             theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
           }`}
         >
-          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
+          {/* <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
             {currentTranslations.title(language)}
-          </h2>
-          <div className="flex flex-col md:flex-row justify-between md:gap-10 md:items-center py-20">
-            <div className="flex flex-col items-center">
-              <h3>Paketler</h3>
-              <span>Tek Ders</span>
-              <span>12 Ders</span>
-              <span>24 Ders</span>
-              <span>36 Ders</span>
-              <span>Uzaktan Eğitim</span>
+          </h2> */}
+          <div className="flex flex-col md:flex-row justify-between md:gap-10 md:items-start py-20">
+            <div className="flex flex-col items-start py-4">
+              <h3 className="font-semibold py-2 text-xl">
+                {currentTranslations.servicesTitle(language)}
+              </h3>
+              {services.map((service) => (
+                <span key={service.id}>{service.title(language)}</span>
+              ))}
             </div>
-            <div>
-              <h3>Referanslar</h3>
-              <span>Başarı Hikayeleri</span>
+            <div className="flex flex-col items-start py-4">
+              <h3 className="font-semibold py-2 text-xl">
+                {currentTranslations.clientStories(language)}
+              </h3>
+              <span onClick={handleReferences} className="cursor-pointer">
+                {currentTranslations.references(language)}
+              </span>
             </div>
-            <div>
-              <h3>İletişim</h3>
-              {/* <span>{currentTranslations.contactInfo(language)}</span>
-              <span>{currentTranslations.phone(language)} 123-456-7890</span>
-              <span>{currentTranslations.emailLabel(language)} */}
+            <div className="flex flex-col items-start py-4">
+              <h3 className="font-semibold py-2 text-xl">
+                {currentTranslations.contactInfo(language)}
+              </h3>
+              <span>+90 552 778 77 37</span>
+              <span>email@gmail.com</span>
             </div>
-            <div>
-              <h3>Beni Takip Et</h3>
-              <span>Instagram</span>
-              <span>Tiktok</span>
-              <span>Twitter</span>
+            <div className="flex flex-col items-start py-4">
+              <h3 className="font-semibold py-2 text-xl">
+                {currentTranslations.followUs(language)}
+              </h3>
+              <span className="hover:text-red-300">
+                <a
+                  href="https://www.instagram.com/pt.abdullahasik/"
+                  target="_blank"
+                >
+                  Instagram
+                </a>
+              </span>
+              <span className="hover:text-red-300">
+                <a
+                  href="https://www.instagram.com/pt.abdullahasik/"
+                  target="_blank"
+                >
+                  TikTok
+                </a>
+              </span>
+              <span className="hover:text-red-300">
+                <a
+                  href="https://www.instagram.com/pt.abdullahasik/"
+                  target="_blank"
+                >
+                  X (Twitter)
+                </a>
+              </span>
             </div>
           </div>
           <div className="justify-center flex items-center">
