@@ -27,20 +27,17 @@ type Translations = {
   mstText2: (language: LanguageKey) => string;
   mstText3: (language: LanguageKey) => string;
   mttText: (language: LanguageKey) => string;
+  mttText1Title: (language: LanguageKey) => string;
   mttText1: (language: LanguageKey) => string;
+  mttText2Title: (language: LanguageKey) => string;
   mttText2: (language: LanguageKey) => string;
+  mttText3Title: (language: LanguageKey) => string;
   mttText3: (language: LanguageKey) => string;
+  mttText4Title: (language: LanguageKey) => string;
+  mttText4: (language: LanguageKey) => string;
   servicesTitle: (language: LanguageKey) => string;
   getInTouch: (language: LanguageKey) => string;
-  sendMessage: (language: LanguageKey) => string;
   contactInfo: (language: LanguageKey) => string;
-  phone: (language: LanguageKey) => string;
-  emailLabel: (language: LanguageKey) => string;
-  address: (language: LanguageKey) => string;
-  visitUs: (language: LanguageKey) => string;
-  footerTitle: (language: LanguageKey) => string;
-  servicesList: (language: LanguageKey) => string[];
-  testimonials: (language: LanguageKey) => string;
   clientStories: (language: LanguageKey) => string;
   contact: (language: LanguageKey) => string;
   contactText: (language: LanguageKey) => string;
@@ -49,8 +46,7 @@ type Translations = {
   pPhone: (language: LanguageKey) => string;
   pMessage: (language: LanguageKey) => string;
   pSubject: (language: LanguageKey) => string;
-  followUs: (language: LanguageKey) => string;
-  copyright: (language: LanguageKey) => string;
+  followMe: (language: LanguageKey) => string;
   scrollingText: (language: LanguageKey) => string;
   references: (language: LanguageKey) => string;
 };
@@ -69,38 +65,49 @@ const translations: { [key in LanguageKey]: Translations } = {
     title: (lang) => (lang === "en" ? "Abdullah Aşık" : ""),
     heroText: (lang) =>
       lang === "en"
-        ? "Transform your life through expert fitness coaching and personalized training plans."
+        ? "Reach your goal body with me! Start now with personal fitness coaching and a personalized workout program."
         : "",
     aboutMe: (lang) => (lang === "en" ? "About Me" : ""),
     aboutMeText: (lang) =>
       lang === "en"
-        ? "In addition to studying sports management since 2018, I have been actively involved in the sports sector as a Personal Coach. As a fitness professional, I attach great importance to improving myself, closely follow the innovations in the sector and participate in various advanced trainings. Since 2021, I have been serving within MAC, offering special programs and professional guidance for individuals to achieve their goals. My goal is to raise individuals who are both physically and mentally strong on the path of sports and to continue to make a difference in the sector."
+        ? "I started my university education in Sports Management in 2018. I started working as a personal coach in the sports sector in 2019. I had the opportunity to combine my theoretical knowledge with practice by being actively involved in the field both during and after my education. Throughout my career, I have placed great importance on developing myself as a fitness professional. I try to keep my knowledge up to date by receiving various trainings from international organizations such as NASM (National Academy of Sports Medicine) and EREPS (European Register of Exercise Professionals). I continue to learn to offer the most accurate and effective methods to my clients by closely following the developments in sports science. I have been serving within MAC (Mars Athletic) since 2021; I contribute to the physical development of individuals with training programs that I have prepared specifically for their goals, needs and lifestyles. At the same time, I provide one-on-one guidance so that they can maintain their motivation and manage the process with pleasure. For me, sports is not only a physical transformation; it is also the basis of mental strengthening. Therefore, my goal is to raise individuals who are strong both physically and mentally and to make a sustainable difference in the sector."
         : "",
     mstText: (lang) => (lang === "en" ? "My Specialization Trainings" : ""),
     mstText1: (lang) =>
-      lang === "en" ? "EREPS Level 4 - Personal Trainer" : "",
+      lang === "en"
+        ? "EREPS (European Register of Exercise Professionals) EQF Level 4"
+        : "",
     mstText2: (lang) =>
-      lang === "en" ? "NASM Certified Personal Training" : "",
+      lang === "en" ? "NASM (National Academy of Sports Medicine) CPT" : "",
     mstText3: (lang) => (lang === "en" ? "MAC Academy" : ""),
     mttText: (lang) => (lang === "en" ? "My Training Techniques" : ""),
-    mttText1: (lang) => (lang === "en" ? "Flexibility Training" : ""),
-    mttText2: (lang) => (lang === "en" ? "Strength Training" : ""),
-    mttText3: (lang) => (lang === "en" ? "Ab & Full Body Workout" : ""),
+    mttText1Title: (lang) =>
+      lang === "en" ? "Weight Control (Weight Gain - Weight Loss)" : "",
+    mttText1: (lang) =>
+      lang === "en"
+        ? "I support healthy living habits with exercise during the weight gain/loss process and provide guidance and motivation regarding nutrition."
+        : "",
+    mttText2Title: (lang) => (lang === "en" ? "Strength Training" : ""),
+    mttText2: (lang) =>
+      lang === "en"
+        ? "I prepare individual strength programs focused on increasing muscle mass, general strength development and performance."
+        : "",
+    mttText3Title: (lang) =>
+      lang === "en" ? "Posture Analysis and Exercise Planning" : "",
+    mttText3: (lang) =>
+      lang === "en"
+        ? "Posture Analysis and Exercise Planning I identify posture disorders in daily life and offer personal exercise plans to improve your posture."
+        : "",
+    mttText4Title: (lang) =>
+      lang === "en" ? "Cardiovascular Training Planning" : "",
+    mttText4: (lang) =>
+      lang === "en"
+        ? "I create personalized cardio programs to increase endurance, support fat burning, and improve heart health."
+        : "",
     servicesTitle: (lang) => (lang === "en" ? "Special Training Packages" : ""),
     getInTouch: (lang) => (lang === "en" ? "Get In Touch" : ""),
-    sendMessage: (lang) => (lang === "en" ? "Send Message" : ""),
     contactInfo: (lang) => (lang === "en" ? "Contact Information" : ""),
-    phone: (lang) => (lang === "en" ? "Phone:" : ""),
-    emailLabel: (lang) => (lang === "en" ? "Email:" : ""),
-    address: (lang) => (lang === "en" ? "Address:" : ""),
-    visitUs: (lang) => (lang === "en" ? "Visit Us" : ""),
-    footerTitle: (lang) => (lang === "en" ? "Elite Fitness" : ""),
-    servicesList: (lang) =>
-      lang === "en"
-        ? ["Personal Training", "Nutrition Plans", "Group Workouts"]
-        : [],
-    testimonials: (lang) => (lang === "en" ? "Testimonials" : ""),
-    clientStories: (lang) => (lang === "en" ? "Our Success Stories" : ""),
+    clientStories: (lang) => (lang === "en" ? "Member Reviews" : ""),
     contact: (lang) => (lang === "en" ? "Get In Touch" : ""),
     contactText: (lang) =>
       lang === "en"
@@ -111,9 +118,7 @@ const translations: { [key in LanguageKey]: Translations } = {
     pPhone: (lang) => (lang === "en" ? "Phone" : ""),
     pMessage: (lang) => (lang === "en" ? "Your Message" : ""),
     pSubject: (lang) => (lang === "en" ? "Send" : ""),
-    followUs: (lang) => (lang === "en" ? "Follow Me" : ""),
-    copyright: (lang) =>
-      lang === "en" ? "© 2025 Created by Fatih Karaşoğlu." : "",
+    followMe: (lang) => (lang === "en" ? "Follow Me" : ""),
     scrollingText: (lang) =>
       lang === "en" ? "scroll down / use arrow down" : "",
     references: (lang) => (lang === "en" ? "References" : ""),
@@ -123,38 +128,49 @@ const translations: { [key in LanguageKey]: Translations } = {
     title: (lang) => (lang === "tr" ? "Abdullah Aşık" : ""),
     heroText: (lang) =>
       lang === "tr"
-        ? "Hayatınızı uzman fitness koçluğu ve kişiselleştirilmiş eğitim planlarıyla dönüştürün."
+        ? "Hedefindeki vücuda benimle birlikte ulaş! Kişisel fitness koçluğu ve sana özel antrenman programıyla şimdi başla."
         : "",
     aboutMe: (lang) => (lang === "tr" ? "Hakkımda" : ""),
     aboutMeText: (lang) =>
       lang === "tr"
-        ? "2018 yılından bu yana okuduğum spor yönetiminin yanı sıra spor sektöründe Personal Coach olarak aktif bir şekilde yer almaktayım. Fitness profesyoneli olarak kendimi geliştirmeye büyük önem veriyor, sektörün yeniliklerini yakından takip ederek çeşitli ileri seviye eğitimlere katılıyorum. 2021 yılından itibaren MAC bünyesinde hizmet veriyor, bireylerin hedeflerine ulaşması için özel programlar ve profesyonel rehberlik sunuyorum. Amacım, spor yolunda hem fiziksel hem de mental olarak güçlü bireyler yetiştirmek ve sektörde fark yaratmaya devam etmek."
+        ? "2018 yılında Spor Yöneticiliği alanında üniversite eğitimime başladım. 2019 yılından itibaren ise spor sektöründe personal coach olarak çalışmaya başladım. Hem eğitim hayatım boyunca hem de sonrasında sahada aktif olarak yer alarak teorik bilgimi pratikle birleştirme fırsatı buldum. Kariyerim boyunca fitness profesyoneli olarak kendimi geliştirmeye büyük önem verdim. NASM (National Academy of Sports Medicine) ve EREPS (European Register of Exercise Professionals) gibi uluslararası kuruluşlardan çeşitli eğitimler alarak bilgi birikimimi güncel tutmaya çalışıyorum. Spor bilimindeki gelişmeleri yakından takip ederek danışanlarıma en doğru ve etkili yöntemleri sunmak için öğrenmeye devam ediyorum. 2021 yılından bu yana MAC (Mars Athletic) bünyesinde hizmet veriyor; bireylerin hedeflerine, ihtiyaçlarına ve yaşam tarzlarına özel olarak hazırladığım antrenman programlarıyla onların fiziksel gelişimlerine katkı sağlıyorum. Aynı zamanda motivasyonlarını sürdürebilmeleri ve süreci keyifle yönetebilmeleri için birebir rehberlik yapıyorum. Benim için spor, sadece fiziksel dönüşüm değil; aynı zamanda mental olarak güçlenmenin de temelidir. Bu yüzden amacım, hem bedensel hem de zihinsel olarak güçlü bireyler yetiştirmek ve sektörde sürdürülebilir bir fark yaratmak."
         : "",
     mstText: (lang) => (lang === "tr" ? "Uzmanlık Eğitimlerim" : ""),
     mstText1: (lang) =>
-      lang === "tr" ? "EREPS Level 4 - Kişisel Antrenör" : "",
+      lang === "tr"
+        ? "EREPS (Avrupa Egzersiz Profesyonelleri Sicili) EQF Seviye 4"
+        : "",
     mstText2: (lang) =>
-      lang === "tr" ? "NASM Sertifikalı Kişisel Eğitim" : "",
+      lang === "tr" ? "NASM (Ulusal Spor Hekimliği Akademisi) CPT" : "",
     mstText3: (lang) => (lang === "tr" ? "MAC Akademi" : ""),
     mttText: (lang) => (lang === "tr" ? "Antrenman Tekniklerim" : ""),
-    mttText1: (lang) => (lang === "tr" ? "Esneklik Antrenmanı" : ""),
-    mttText2: (lang) => (lang === "tr" ? "Kuvvet Antrenmanı" : ""),
-    mttText3: (lang) => (lang === "tr" ? "Karın & Tüm Vücut Antrenmanı" : ""),
+    mttText1Title: (lang) =>
+      lang === "tr" ? "Kilo Kontrolü (Kilo Alma – Kilo Verme)" : "",
+    mttText1: (lang) =>
+      lang === "tr"
+        ? "Kilo alma/verme sürecinde egzersizle birlikte sağlıklı yaşam alışkanlıklarını destekliyor, beslenme konusunda yönlendirme ve motivasyon sağlıyorum."
+        : "",
+    mttText2Title: (lang) => (lang === "tr" ? "Kuvvet Antrenmanı" : ""),
+    mttText2: (lang) =>
+      lang === "tr"
+        ? "Kuvvet Antrenmanı Kas kütlesi artırma, genel güç gelişimi ve performans odaklı bireysel kuvvet programları hazırlıyorum."
+        : "",
+    mttText3Title: (lang) =>
+      lang === "tr" ? "Postür Analizi ve Egzersiz Planlaması" : "",
+    mttText3: (lang) =>
+      lang === "tr"
+        ? "Postür Analizi ve Egzersiz Planlaması Günlük yaşamda duruş bozukluklarını tespit ederek, postürünüzü iyileştirmeye yönelik kişisel egzersiz planları sunuyorum."
+        : "",
+    mttText4Title: (lang) =>
+      lang === "tr" ? "Kardiyovasküler Antrenman Planlaması" : "",
+    mttText4: (lang) =>
+      lang === "tr"
+        ? "Kardiyovasküler Antrenman Planlaması Dayanıklılığı artırmak, yağ yakımını desteklemek ve kalp sağlığını geliştirmek için kişiye özel kardiyo programları oluşturuyorum."
+        : "",
     servicesTitle: (lang) => (lang === "tr" ? "Özel Antrenman Paketleri" : ""),
     getInTouch: (lang) => (lang === "tr" ? "İletişime Geçelim" : ""),
-    sendMessage: (lang) => (lang === "tr" ? "Mesaj Gönder" : ""),
     contactInfo: (lang) => (lang === "tr" ? "İletişim Bilgileri" : ""),
-    phone: (lang) => (lang === "tr" ? "Telefon:" : ""),
-    emailLabel: (lang) => (lang === "tr" ? "E-posta:" : ""),
-    address: (lang) => (lang === "tr" ? "Adres:" : ""),
-    visitUs: (lang) => (lang === "tr" ? "Ziyaret Edin" : ""),
-    footerTitle: (lang) => (lang === "tr" ? "Elite Fitness" : ""),
-    servicesList: (lang) =>
-      lang === "tr"
-        ? ["Kişisel Antrenman", "Beslenme Planları", "Grup Antrenmanları"]
-        : [],
-    testimonials: (lang) => (lang === "tr" ? "Referanslar" : ""),
-    clientStories: (lang) => (lang === "tr" ? "Başarı Hikayelerimiz" : ""),
+    clientStories: (lang) => (lang === "tr" ? "Üye Değerlendirmeleri" : ""),
     contact: (lang) => (lang === "tr" ? "İletişime Geçelim" : ""),
     contactText: (lang) =>
       lang === "tr"
@@ -165,9 +181,7 @@ const translations: { [key in LanguageKey]: Translations } = {
     pPhone: (lang) => (lang === "tr" ? "Telefon" : ""),
     pMessage: (lang) => (lang === "tr" ? "Mesajınız" : ""),
     pSubject: (lang) => (lang === "tr" ? "Gönder" : ""),
-    followUs: (lang) => (lang === "tr" ? "Beni Takip Edin" : ""),
-    copyright: (lang) =>
-      lang === "tr" ? "© 2025 Fatih Karaşoğlu tarafından oluşturuldu." : "",
+    followMe: (lang) => (lang === "tr" ? "Beni Takip Edin" : ""),
     scrollingText: (lang) =>
       lang === "tr" ? "Aşağı kaydır / Aşağı okunu kullan" : "",
     references: (lang) => (lang === "tr" ? "Referanslar" : ""),
@@ -511,35 +525,66 @@ export default function Home() {
             {currentTranslations.aboutMeText(language)}
           </p>
           <div
-            className={`flex flex-col md:flex-row items-start justify-start md:justify-around w-full py-5 mt-10`}
+            className={`flex flex-col md:flex-col items-center justify-center md:justify-around w-full py-5 mt-10`}
           >
             <div
-              className={`flex flex-col justify-center py-6 ${
+              className={`flex flex-col justify-center py-6 md:px-10 ${
                 theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
               }`}
             >
-              <h3 className="text-xl">
-                {currentTranslations.mstText(language)}
-              </h3>
-              <span className="mt-2">
-                🌟{currentTranslations.mstText1(language)}
-              </span>
-              <span>🌟{currentTranslations.mstText2(language)}</span>
-              <span>🌟{currentTranslations.mstText3(language)}</span>
-            </div>
-            <div
-              className={`flex flex-col justify-center py-6 ${
-                theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
-              }`}
-            >
-              <h3 className="text-xl">
+              <h3
+                className={`text-lg font-semibold text-center ${
+                  theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+                }`}
+              >
                 {currentTranslations.mttText(language)}
               </h3>
               <span className="mt-2">
-                💪{currentTranslations.mttText1(language)}
+                💪{" "}
+                <span className="font-semibold">
+                  {currentTranslations.mttText1Title(language)}
+                </span>{" "}
+                {currentTranslations.mttText1(language)}
               </span>
-              <span>💪{currentTranslations.mttText2(language)}</span>
-              <span>💪{currentTranslations.mttText3(language)}</span>
+              <span>
+                💪{" "}
+                <span className="font-semibold">
+                  {currentTranslations.mttText2Title(language)}
+                </span>{" "}
+                {currentTranslations.mttText2(language)}
+              </span>
+              <span>
+                💪{" "}
+                <span className="font-semibold">
+                  {currentTranslations.mttText3Title(language)}
+                </span>{" "}
+                {currentTranslations.mttText3(language)}
+              </span>
+              <span>
+                💪{" "}
+                <span className="font-semibold">
+                  {currentTranslations.mttText4Title(language)}
+                </span>{" "}
+                {currentTranslations.mttText4(language)}
+              </span>
+            </div>
+            <h3
+              className={`text-lg font-semibold text-center ${
+                theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+              }`}
+            >
+              {currentTranslations.mstText(language)}
+            </h3>
+            <div
+              className={`w-full flex flex-col md:flex-row justify-around md:items-center py-6 ${
+                theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+              }`}
+            >
+              <span className="">
+                🌟{currentTranslations.mstText1(language)}
+              </span>
+              <span>🌟 {currentTranslations.mstText2(language)}</span>
+              <span>🌟 {currentTranslations.mstText3(language)}</span>
             </div>
           </div>
         </div>
@@ -563,7 +608,7 @@ export default function Home() {
               <div
                 key={service.id}
                 className={`p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 shadow-lg ${
-                  theme === "dark" ? "bg-[#171717]" : "bg-[#f1f1f1]"
+                  theme === "dark" ? "bg-[#2a2a2a]" : "bg-[#ececec]"
                 }`}
                 aria-label={`Service: ${service.title(language)}`}
               >
@@ -615,8 +660,8 @@ export default function Home() {
                 key={index}
                 className={`p-6 rounded-xl shadow-lg cursor-pointer ${
                   theme === "dark"
-                    ? "bg-[#171717] text-[#f1f1f1]"
-                    : "border bg-[#f1f1f1] text-[#313131]"
+                    ? "bg-[#2a2a2a] text-[#f1f1f1]"
+                    : "border bg-[#ececec] text-[#313131]"
                 }`}
               >
                 <div className="flex items-center mb-4">
@@ -762,7 +807,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-start py-4">
               <h3 className="font-semibold py-2 text-xl">
-                {currentTranslations.followUs(language)}
+                {currentTranslations.followMe(language)}
               </h3>
               <span className="hover:text-red-300">
                 <a
