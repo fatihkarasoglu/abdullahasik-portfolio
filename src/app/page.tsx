@@ -1,14 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import ThemeSwitch from "./components/ThemeSwitch";
 import Image from "next/image";
 import whiteLogo from "../../public/white-logo.png";
 import blackLogo from "../../public/black-logo.png";
 import main from "../../public/3.png";
-import { BsFillLightningChargeFill } from "react-icons/bs";
-import { FaDumbbell, FaLaptopHouse, FaMale, FaFemale } from "react-icons/fa";
-import { GiRunningNinja, GiProgression } from "react-icons/gi";
+import { FaMale, FaFemale } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
@@ -36,6 +34,8 @@ type Translations = {
   mttText4Title: (language: LanguageKey) => string;
   mttText4: (language: LanguageKey) => string;
   servicesTitle: (language: LanguageKey) => string;
+  servicesHelp: (language: LanguageKey) => string;
+  servicesHelpAbout: (language: LanguageKey) => string;
   getInTouch: (language: LanguageKey) => string;
   contactInfo: (language: LanguageKey) => string;
   clientStories: (language: LanguageKey) => string;
@@ -53,10 +53,10 @@ type Translations = {
 
 type Service = {
   id: number;
-  icon: React.ReactNode;
-  title: (language: LanguageKey) => string;
-  description: (language: LanguageKey) => string;
-  price: string;
+  title: string | ((lang: LanguageKey) => string);
+  description: string | ((lang: LanguageKey) => string);
+  descriptionText: string | ((lang: LanguageKey) => string);
+  price: string | ((lang: LanguageKey) => string);
 };
 
 const translations: { [key in LanguageKey]: Translations } = {
@@ -105,6 +105,9 @@ const translations: { [key in LanguageKey]: Translations } = {
         ? "I create personalized cardio programs to increase endurance, support fat burning, and improve heart health."
         : "",
     servicesTitle: (lang) => (lang === "en" ? "Special Training Packages" : ""),
+    servicesHelp: (lang) =>
+      lang === "en" ? "Have questions about which package to choose?" : "",
+    servicesHelpAbout: (lang) => (lang === "en" ? "Ask me!" : ""),
     getInTouch: (lang) => (lang === "en" ? "Get In Touch" : ""),
     contactInfo: (lang) => (lang === "en" ? "Contact Information" : ""),
     clientStories: (lang) => (lang === "en" ? "Member Reviews" : ""),
@@ -168,6 +171,9 @@ const translations: { [key in LanguageKey]: Translations } = {
         ? "Kardiyovasküler Antrenman Planlaması Dayanıklılığı artırmak, yağ yakımını desteklemek ve kalp sağlığını geliştirmek için kişiye özel kardiyo programları oluşturuyorum."
         : "",
     servicesTitle: (lang) => (lang === "tr" ? "Özel Antrenman Paketleri" : ""),
+    servicesHelp: (lang) =>
+      lang === "tr" ? "Hangi paketi seçeceğinle ilgili soruların mı var?" : "",
+    servicesHelpAbout: (lang) => (lang === "tr" ? "Bana sor!" : ""),
     getInTouch: (lang) => (lang === "tr" ? "İletişime Geçelim" : ""),
     contactInfo: (lang) => (lang === "tr" ? "İletişim Bilgileri" : ""),
     clientStories: (lang) => (lang === "tr" ? "Üye Değerlendirmeleri" : ""),
@@ -191,55 +197,41 @@ const translations: { [key in LanguageKey]: Translations } = {
 const services: Service[] = [
   {
     id: 1,
-    icon: (
-      <BsFillLightningChargeFill className="h-12 w-12 mb-4 text-blue-500" />
-    ),
-    title: (lang) => (lang === "en" ? "One Lesson" : "Tek Ders"),
+    title: (lang) =>
+      lang === "en"
+        ? "One-on-One Private or Online Lesson"
+        : "Birebir Özel veya Online Ders",
     description: (lang) =>
       lang === "en"
-        ? "Customized workout plans tailored to your goals and fitness level."
-        : "Hedeflerinize ve fitness seviyenize göre uyarlanmış kişiselleştirilmiş antrenman planları.",
-    price: "1.200 ₺",
+        ? "In-house or online meetings, personalized, detailed and up-to-date training program, monthly performance measurements, comprehensive development evaluation, continuous technical support and motivation."
+        : "Kendi klübümde ya da online görüşerek, kişiye özel, detaylı ve güncel antrenman programı, aylık performans ölçümleri, kapsamlı gelişim değerlendirmesi, sürekli teknik destek ve motivasyon.",
+    descriptionText: (lang) =>
+      lang === "en"
+        ? "(1 Lesson 1.200 ₺) - (12 Lessons 11.400 ₺) - (24 Lessons 22.200 ₺) - (36 Lessons 32.400 ₺)"
+        : "(1 Ders 1.200 ₺) - (12 Ders 11.400 ₺) - (24 Ders 22.200 ₺) - (36 Ders 32.400 ₺)",
+    price: "",
   },
   {
     id: 2,
-    icon: <FaDumbbell className="h-12 w-12 mb-4 text-pink-500" />,
-    title: (lang) => (lang === "en" ? "12 Lessons" : "12 Ders"),
+    title: (lang) =>
+      lang === "en" ? "Online Coaching Package" : "Online Koçluk Paketi",
     description: (lang) =>
       lang === "en"
-        ? "Expert meal plans to help you reach your body composition goals."
-        : "Vücut kompozisyon hedeflerinize ulaşmanıza yardımcı olacak uzman yemek planları.",
-    price: "11.400 ₺",
+        ? "Unlimited WhatsApp support, flexible schedule updates, motivation and guidance, detailed tracking of progress"
+        : "Sınırsız WhatsApp desteği, esnek program güncelleme, motivasyon ve rehberlik, ilerlemenin detaylı takibi",
+    descriptionText: (lang) => (lang === "en" ? "" : ""),
+    price: "3.000 ₺",
   },
   {
     id: 3,
-    icon: <GiRunningNinja className="h-12 w-12 mb-4 text-gray-500" />,
-    title: (lang) => (lang === "en" ? "24 Lessons" : "24 Ders"),
+    title: (lang) =>
+      lang === "en" ? "Training Program Package" : "Antrenman Programı Paketi",
     description: (lang) =>
       lang === "en"
-        ? "Restore your body's range of motion with targeted stretching and mobility exercises."
-        : "Hedeflenen germe ve hareketlilik egzersizleriyle vücudunuzun hareket açıklığını geri kazanın.",
-    price: "22.200 ₺",
-  },
-  {
-    id: 4,
-    icon: <GiProgression className="h-12 w-12 mb-4 text-green-500" />,
-    title: (lang) => (lang === "en" ? "36 Lessons" : "36 Ders"),
-    description: (lang) =>
-      lang === "en"
-        ? "Customized training plans for marathon runners, sprinters, and triathletes."
-        : "Maraton koşucuları, sprinterler ve triatletler için kişiselleştirilmiş antrenman planları.",
-    price: "32.400 ₺",
-  },
-  {
-    id: 5,
-    icon: <FaLaptopHouse className="h-12 w-12 mb-4 text-purple-500" />,
-    title: (lang) => (lang === "en" ? "Remote Training" : "Uzaktan Eğitim"),
-    description: (lang) =>
-      lang === "en"
-        ? "Build muscle mass and strength with progressive resistance training."
-        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    price: "1.000 ₺",
+        ? "Personalized training program, program application support, one-time update, suitable for home and gym"
+        : "Kişiye özel antrenman programı, program uygulama desteği, 1 defaya mahsus güncelleme, ev ve spor salonu için uygun",
+    descriptionText: (lang) => (lang === "en" ? "" : ""),
+    price: "2.000 ₺",
   },
 ];
 
@@ -350,8 +342,50 @@ const stories = [
   },
 ];
 
+type PackageCardWithDetailsProps = {
+  theme: string;
+  language: LanguageKey;
+};
+
+function getValue(
+  value: string | ((lang: LanguageKey) => string),
+  lang: LanguageKey
+): string {
+  return typeof value === "function" ? value(lang) : value;
+}
+
+const PackageCardWithDetails: React.FC<PackageCardWithDetailsProps> = ({
+  theme,
+  language,
+}) => {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-1 md:px-40 [&>*:first-child]:border-l-red-600 [&>*:first-child]:border-l-8">
+      {services.map((service) => (
+        <div
+          key={service.id}
+          className={`p-6 my-4 rounded-xl transition-all duration-300 hover:-translate-y-2 shadow-lg  ${
+            theme === "dark" ? "bg-[#2a2a2a]" : "bg-[#ececec]"
+          }`}
+          aria-label={`Service: ${getValue(service.title, language)}`}
+        >
+          <div className="flex items-center text-lg font-semibold justify-between mb-4">
+            <span>{getValue(service.title, language)} </span>
+            <span className="text-lg md:text-xl font-bold italic">
+              {getValue(service.price, language)}
+            </span>
+          </div>
+          <p className="">{getValue(service.description, language)}</p>
+          <p className="italic text-lg font-medium">
+            {getValue(service.descriptionText, language)}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 export default function Home() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
   const [language, setLanguage] = useState<LanguageKey>("tr");
 
   const toggleTheme = () => {
@@ -597,36 +631,16 @@ export default function Home() {
         }`}
       >
         <div className="">
-          <h2
-            className={`text-2xl md:text-2xl font-semibold mb-12 text-center`}
-          >
+          <h2 className={`text-2xl md:text-2xl font-semibold mb-6 text-center`}>
             {currentTranslations.servicesTitle(language)}
           </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <div
-                key={service.id}
-                className={`p-6 rounded-xl transition-all duration-300 hover:-translate-y-2 shadow-lg ${
-                  theme === "dark" ? "bg-[#2a2a2a]" : "bg-[#ececec]"
-                }`}
-                aria-label={`Service: ${service.title(language)}`}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  {service.icon}
-                  <span className="text-lg md:text-xl font-semibold italic">
-                    {service.title(language)}
-                  </span>
-                </div>
-                <p className="mb-4">{service.description(language)}</p>
-                <div className="border-t pt-1 mt-4">
-                  <p className="text-lg md:text-xl font-bold text-blue-500 dark:text-blue-400 italic">
-                    {service.price}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <h3 className="text-lg text-center py-4">
+            {currentTranslations.servicesHelp(language)}{" "}
+            <span className="cursor-pointer hover:text-[#e92931] font-medium italic">
+              {currentTranslations.servicesHelpAbout(language)}
+            </span>{" "}
+          </h3>
+          <PackageCardWithDetails theme={theme} language={language} />
         </div>
       </section>
 
@@ -787,7 +801,9 @@ export default function Home() {
                 {currentTranslations.servicesTitle(language)}
               </h3>
               {services.map((service) => (
-                <span key={service.id}>{service.title(language)}</span>
+                <span key={service.id}>
+                  {getValue(service.title, language)}
+                </span>
               ))}
             </div>
             <div className="flex flex-col items-start py-4">
