@@ -1,6 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React, {
+  useState,
+  useRef,
+  FormEvent,
+  SetStateAction,
+  useEffect,
+} from "react";
+import ReactDOM from "react-dom";
+import { GiConfirmed } from "react-icons/gi";
+import emailjs from "@emailjs/browser";
 import ThemeSwitch from "./components/ThemeSwitch";
 import Image from "next/image";
 import whiteLogo from "../../public/white-logo.png";
@@ -49,6 +58,7 @@ type Translations = {
   followMe: (language: LanguageKey) => string;
   scrollingText: (language: LanguageKey) => string;
   references: (language: LanguageKey) => string;
+  Insta: (language: LanguageKey) => string;
 };
 
 type Service = {
@@ -125,6 +135,7 @@ const translations: { [key in LanguageKey]: Translations } = {
     scrollingText: (lang) =>
       lang === "en" ? "scroll down / use arrow down" : "",
     references: (lang) => (lang === "en" ? "References" : ""),
+    Insta: (lang) => (lang === "en" ? "My Instagram Posts" : ""),
   },
   tr: {
     semititle: (lang) => (lang === "tr" ? "Kişisel Antrenör" : ""),
@@ -191,6 +202,7 @@ const translations: { [key in LanguageKey]: Translations } = {
     scrollingText: (lang) =>
       lang === "tr" ? "Aşağı kaydır / Aşağı okunu kullan" : "",
     references: (lang) => (lang === "tr" ? "Referanslar" : ""),
+    Insta: (lang) => (lang === "tr" ? "Instagram Gönderilerim" : ""),
   },
 };
 
@@ -375,8 +387,12 @@ const PackageCardWithDetails: React.FC<PackageCardWithDetailsProps> = ({
             </span>
           </div>
           <p className="">{getValue(service.description, language)}</p>
-          <p className="italic text-lg font-medium">
-            {getValue(service.descriptionText, language)}
+          <p className="italic text-lg font-medium flex flex-col md:flex-row gap-2">
+            {getValue(service.descriptionText, language)
+              .split(" - ")
+              .map((item, index) => (
+                <span key={index}>{item}</span>
+              ))}
           </p>
         </div>
       ))}
@@ -384,9 +400,61 @@ const PackageCardWithDetails: React.FC<PackageCardWithDetailsProps> = ({
   );
 };
 
+const Modal = ({
+  isOpen,
+}: {
+  isOpen: React.Dispatch<SetStateAction<boolean>>;
+}) => {
+  return ReactDOM.createPortal(
+    <div className="fixed bg-black/50 bg-opacity-50 z-50 w-full h-full flex justify-center items-center top-0">
+      <div className="bg-white opacity-100 px-6 py-6 rounded-lg flex flex-col items-center">
+        <GiConfirmed className="text-green-500 w-28 h-28" />
+        <h2 className="text-green-600 font-semibold text-2xl mb-2">
+          Mesajınız başarıyla gönderildi!
+        </h2>
+        <div>
+          <p className="text-xl text-black">
+            Teşekkür ederim! Mümkün olan en kısa sürede sizinle iletişime
+            geçeceğim.
+          </p>
+          <button
+            onClick={() => isOpen(false)}
+            className="bg-blue-500 text-white w-full p-2 rounded-lg mt-6 hover:bg-blue-600 cursor-pointer"
+          >
+            Kapat
+          </button>
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
+};
+
 export default function Home() {
   const [theme, setTheme] = useState("light");
   const [language, setLanguage] = useState<LanguageKey>("tr");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const form = useRef<HTMLFormElement | null>(null);
+
+  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!form.current) return;
+
+    emailjs
+      .sendForm("service_m59z64g", "template_c8ndajl", form.current, {
+        publicKey: "xV6dRBbjHjpe3YSFk",
+      })
+      .then(
+        () => {
+          setIsOpen(true);
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        }
+      );
+  };
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
@@ -419,6 +487,25 @@ export default function Home() {
 
   const currentTranslations = translations[language];
 
+  const instaLinks = [
+    "https://www.instagram.com/p/DHwBE_NNqsl/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    "https://www.instagram.com/p/DEFfbLKIlkC/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    "https://www.instagram.com/p/C_A9BlGo2fT/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  ];
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (window.instgrm && window.instgrm.Embeds) {
+        window.instgrm.Embeds.process();
+      } else {
+        const script = document.createElement("script");
+        script.src = "https://www.instagram.com/embed.js";
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    }
+  }, []);
+
   return (
     <div
       className={`min-h-screen min-w-full flex flex-col ${
@@ -448,7 +535,7 @@ export default function Home() {
           </div>
           <div className="flex flex-row items-center justify-between">
             <button
-              className={`px-4 py-2 rounded-full cursor-pointer ${
+              className={`px-4 py-2 rounded-full cursor-pointer hover:scale-105 ${
                 theme === "dark"
                   ? "bg-[#f1f1f1] text-[#313131]"
                   : "bg-[#313131] text-[#f1f1f1]"
@@ -460,7 +547,7 @@ export default function Home() {
             </button>
             <button
               onClick={toggleLanguage}
-              className={`px-4 py-1 rounded-full font-bold ml-4 cursor-pointer ${
+              className={`px-4 py-1 rounded-full font-bold ml-4 cursor-pointer hover:scale-105 ${
                 theme === "dark"
                   ? "bg-[#f1f1f1] text-[#313131]"
                   : "bg-[#313131] text-[#f1f1f1]"
@@ -710,6 +797,35 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="instaPost" className="px-10 py-20">
+        <h2
+          className={`text-2xl md:text-2xl font-semibold py-6 text-center ${
+            theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+          }`}
+        >
+          {currentTranslations.Insta(language)}
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {instaLinks.map((link, index) => (
+            <div
+              key={index}
+              className="instagram-embed w-full"
+              dangerouslySetInnerHTML={{
+                __html: `
+                <blockquote 
+                  class="instagram-media" 
+                  data-instgrm-permalink="${link}" 
+                  data-instgrm-version="14" 
+                  style="background:#FFF; border:0; margin:0 auto; max-width:540px; min-width:326px; width:100%; padding:0;">
+                </blockquote>
+              `,
+              }}
+            />
+          ))}
+        </div>
+      </section>
+
       <section
         id="contact"
         className={`px-10 py-20 ${
@@ -726,14 +842,16 @@ export default function Home() {
             </p>
           </div>
           <form
+            ref={form}
             action=""
             className="flex flex-col md:flex-row items-center justify-center"
+            onSubmit={sendEmail}
           >
             <div className="w-full md:w-1/2 flex flex-col items-center justify-center">
               <input
                 type="text"
                 placeholder={currentTranslations.pName(language)}
-                name=""
+                name="name"
                 className={`w-full p-2 ${
                   theme === "dark"
                     ? "border-b border-[#f1f1f1] focus:outline-blue-500"
@@ -743,7 +861,7 @@ export default function Home() {
               <input
                 type="text"
                 placeholder={currentTranslations.pEmail(language)}
-                name=""
+                name="email"
                 className={`w-full p-2 ${
                   theme === "dark"
                     ? "border-b border-[#f1f1f1] focus:outline-blue-500"
@@ -753,7 +871,7 @@ export default function Home() {
               <input
                 type="tel"
                 placeholder={currentTranslations.pPhone(language)}
-                name=""
+                name="phone"
                 className={`w-full p-2 ${
                   theme === "dark"
                     ? "border-b border-[#f1f1f1] focus:outline-blue-500"
@@ -764,7 +882,7 @@ export default function Home() {
                 className={`w-full p-2 mt-2 ${
                   theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
                 }`}
-                name=""
+                name="message"
                 id=""
                 placeholder={currentTranslations.pMessage(language)}
               ></textarea>
@@ -782,6 +900,7 @@ export default function Home() {
                 className="min-h-[275px] min-w-full rounded-md p-2"
               ></iframe>
             </div>
+            {isOpen && <Modal isOpen={setIsOpen} />}
           </form>
         </div>
       </section>
