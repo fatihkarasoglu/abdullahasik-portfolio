@@ -9,19 +9,28 @@ import React, {
 } from "react";
 import ReactDOM from "react-dom";
 import { GiConfirmed } from "react-icons/gi";
+import { FiPlus, FiMinus, FiChevronDown } from "react-icons/fi";
+import { FaInstagram, FaTiktok, FaSquareXTwitter } from "react-icons/fa6";
 import emailjs from "@emailjs/browser";
 import ThemeSwitch from "./components/ThemeSwitch";
 import Image from "next/image";
 import whiteLogo from "../../public/white-logo.png";
 import blackLogo from "../../public/black-logo.png";
-import main from "../../public/3.png";
-import { FaMale, FaFemale } from "react-icons/fa";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import main from "../../public/5.png";
+// import { FaMale, FaFemale } from "react-icons/fa";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
 type LanguageKey = "en" | "tr";
+
+type TranslatableText = (lang: LanguageKey) => string;
+
+interface FaqItem {
+  question: TranslatableText;
+  answer: TranslatableText;
+}
 
 type Translations = {
   semititle: (language: LanguageKey) => string;
@@ -43,6 +52,7 @@ type Translations = {
   mttText4Title: (language: LanguageKey) => string;
   mttText4: (language: LanguageKey) => string;
   servicesTitle: (language: LanguageKey) => string;
+  QAccess: (language: LanguageKey) => string;
   servicesHelp: (language: LanguageKey) => string;
   servicesHelpAbout: (language: LanguageKey) => string;
   getInTouch: (language: LanguageKey) => string;
@@ -59,6 +69,9 @@ type Translations = {
   scrollingText: (language: LanguageKey) => string;
   references: (language: LanguageKey) => string;
   Insta: (language: LanguageKey) => string;
+  faqs: (language: LanguageKey) => string;
+  faqQ: (language: LanguageKey) => string;
+  faqW: (language: LanguageKey) => string;
 };
 
 type Service = {
@@ -71,7 +84,7 @@ type Service = {
 
 const translations: { [key in LanguageKey]: Translations } = {
   en: {
-    semititle: (lang) => (lang === "en" ? "Personal Trainer" : ""),
+    semititle: (lang) => (lang === "en" ? "Professional Personal Trainer" : ""),
     title: (lang) => (lang === "en" ? "Abdullah Aşık" : ""),
     heroText: (lang) =>
       lang === "en"
@@ -118,6 +131,7 @@ const translations: { [key in LanguageKey]: Translations } = {
     servicesHelp: (lang) =>
       lang === "en" ? "Have questions about which package to choose?" : "",
     servicesHelpAbout: (lang) => (lang === "en" ? "Ask me!" : ""),
+    QAccess: (lang) => (lang === "en" ? "Quick Access" : ""),
     getInTouch: (lang) => (lang === "en" ? "Get In Touch" : ""),
     contactInfo: (lang) => (lang === "en" ? "Contact Information" : ""),
     clientStories: (lang) => (lang === "en" ? "Member Reviews" : ""),
@@ -136,9 +150,13 @@ const translations: { [key in LanguageKey]: Translations } = {
       lang === "en" ? "scroll down / use arrow down" : "",
     references: (lang) => (lang === "en" ? "References" : ""),
     Insta: (lang) => (lang === "en" ? "My Instagram Posts" : ""),
+    faqs: (lang) => (lang === "en" ? "Frequently Asked Questions" : ""),
+    faqQ: (lang) =>
+      lang === "en" ? "If you can't find answers to your questions," : "",
+    faqW: (lang) => (lang === "en" ? "let's contact via WhatsApp!" : ""),
   },
   tr: {
-    semititle: (lang) => (lang === "tr" ? "Kişisel Antrenör" : ""),
+    semititle: (lang) => (lang === "tr" ? "Profesyonel Kişisel Antrenör" : ""),
     title: (lang) => (lang === "tr" ? "Abdullah Aşık" : ""),
     heroText: (lang) =>
       lang === "tr"
@@ -182,6 +200,7 @@ const translations: { [key in LanguageKey]: Translations } = {
         ? "Kardiyovasküler Antrenman Planlaması Dayanıklılığı artırmak, yağ yakımını desteklemek ve kalp sağlığını geliştirmek için kişiye özel kardiyo programları oluşturuyorum."
         : "",
     servicesTitle: (lang) => (lang === "tr" ? "Özel Antrenman Paketleri" : ""),
+    QAccess: (lang) => (lang === "tr" ? "Hızlı Erişim" : ""),
     servicesHelp: (lang) =>
       lang === "tr" ? "Hangi paketi seçeceğinle ilgili soruların mı var?" : "",
     servicesHelpAbout: (lang) => (lang === "tr" ? "Bana sor!" : ""),
@@ -203,6 +222,10 @@ const translations: { [key in LanguageKey]: Translations } = {
       lang === "tr" ? "Aşağı kaydır / Aşağı okunu kullan" : "",
     references: (lang) => (lang === "tr" ? "Referanslar" : ""),
     Insta: (lang) => (lang === "tr" ? "Instagram Gönderilerim" : ""),
+    faqs: (lang) => (lang === "tr" ? "Sıkça Sorulan Sorular" : ""),
+    faqQ: (lang) => (lang === "tr" ? "Sorularına cevap bulamadıysan," : ""),
+    faqW: (lang) =>
+      lang === "tr" ? "WhatsApp üzerinden iletişime geçelim!" : "",
   },
 };
 
@@ -247,112 +270,112 @@ const services: Service[] = [
   },
 ];
 
-const stories = [
-  {
-    id: 1,
-    icon: <FaMale className="h-8 w-8 mb-3 text-blue-500" />,
-    title: "John M.",
-    description: (lang: LanguageKey) =>
-      lang === "en"
-        ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: (lang: LanguageKey) =>
-      lang === "en"
-        ? "'The best investment I've ever made was in my health."
-        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-  },
-  {
-    id: 2,
-    icon: <FaFemale className="h-8 w-8 mb-3 text-pink-500" />,
-    title: "Sarah J.",
-    description: (lang: LanguageKey) =>
-      lang === "en"
-        ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: (lang: LanguageKey) =>
-      lang === "en"
-        ? "'The best investment I've ever made was in my health."
-        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-  },
-  {
-    id: 3,
-    icon: <FaMale className="h-8 w-8 mb-3 text-gray-500" />,
-    title: "Mike R.",
-    description: (lang: LanguageKey) =>
-      lang === "en"
-        ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: (lang: LanguageKey) =>
-      lang === "en"
-        ? "'The best investment I've ever made was in my health."
-        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-  },
-  {
-    id: 4,
-    icon: <FaFemale className="h-8 w-8 mb-3 text-green-500" />,
-    title: "Emma L.",
-    description: (lang: LanguageKey) =>
-      lang === "en"
-        ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: (lang: LanguageKey) =>
-      lang === "en"
-        ? "'The best investment I've ever made was in my health."
-        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-  },
-  {
-    id: 5,
-    icon: <FaMale className="h-8 w-8 mb-3 text-purple-500" />,
-    title: "David B.",
-    description: (lang: LanguageKey) =>
-      lang === "en"
-        ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: (lang: LanguageKey) =>
-      lang === "en"
-        ? "'The best investment I've ever made was in my health."
-        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-  },
-  {
-    id: 6,
-    icon: <FaFemale className="h-8 w-8 mb-3 text-blue-400" />,
-    title: "Lauren H.",
-    description: (lang: LanguageKey) =>
-      lang === "en"
-        ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: (lang: LanguageKey) =>
-      lang === "en"
-        ? "'The best investment I've ever made was in my health."
-        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-  },
-  {
-    id: 7,
-    icon: <FaMale className="h-8 w-8 mb-3 text-pink-400" />,
-    title: "Tom A.",
-    description: (lang: LanguageKey) =>
-      lang === "en"
-        ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: (lang: LanguageKey) =>
-      lang === "en"
-        ? "'The best investment I've ever made was in my health."
-        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-  },
-  {
-    id: 8,
-    icon: <FaFemale className="h-8 w-8 mb-3 text-purple-400" />,
-    title: "Kate P.",
-    description: (lang: LanguageKey) =>
-      lang === "en"
-        ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-    quote: (lang: LanguageKey) =>
-      lang === "en"
-        ? "'The best investment I've ever made was in my health."
-        : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-  },
-];
+// const stories = [
+//   {
+//     id: 1,
+//     icon: <FaMale className="h-8 w-8 mb-3 text-blue-500" />,
+//     title: "John M.",
+//     description: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
+//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
+//     quote: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "'The best investment I've ever made was in my health."
+//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
+//   },
+//   {
+//     id: 2,
+//     icon: <FaFemale className="h-8 w-8 mb-3 text-pink-500" />,
+//     title: "Sarah J.",
+//     description: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
+//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
+//     quote: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "'The best investment I've ever made was in my health."
+//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
+//   },
+//   {
+//     id: 3,
+//     icon: <FaMale className="h-8 w-8 mb-3 text-gray-500" />,
+//     title: "Mike R.",
+//     description: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
+//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
+//     quote: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "'The best investment I've ever made was in my health."
+//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
+//   },
+//   {
+//     id: 4,
+//     icon: <FaFemale className="h-8 w-8 mb-3 text-green-500" />,
+//     title: "Emma L.",
+//     description: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
+//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
+//     quote: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "'The best investment I've ever made was in my health."
+//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
+//   },
+//   {
+//     id: 5,
+//     icon: <FaMale className="h-8 w-8 mb-3 text-purple-500" />,
+//     title: "David B.",
+//     description: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
+//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
+//     quote: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "'The best investment I've ever made was in my health."
+//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
+//   },
+//   {
+//     id: 6,
+//     icon: <FaFemale className="h-8 w-8 mb-3 text-blue-400" />,
+//     title: "Lauren H.",
+//     description: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
+//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
+//     quote: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "'The best investment I've ever made was in my health."
+//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
+//   },
+//   {
+//     id: 7,
+//     icon: <FaMale className="h-8 w-8 mb-3 text-pink-400" />,
+//     title: "Tom A.",
+//     description: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
+//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
+//     quote: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "'The best investment I've ever made was in my health."
+//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
+//   },
+//   {
+//     id: 8,
+//     icon: <FaFemale className="h-8 w-8 mb-3 text-purple-400" />,
+//     title: "Kate P.",
+//     description: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
+//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
+//     quote: (lang: LanguageKey) =>
+//       lang === "en"
+//         ? "'The best investment I've ever made was in my health."
+//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
+//   },
+// ];
 
 type PackageCardWithDetailsProps = {
   theme: string;
@@ -376,7 +399,7 @@ const PackageCardWithDetails: React.FC<PackageCardWithDetailsProps> = ({
         <div
           key={service.id}
           className={`p-6 my-4 rounded-xl transition-all duration-300 hover:-translate-y-2 shadow-lg  ${
-            theme === "dark" ? "bg-[#2a2a2a]" : "bg-[#ececec]"
+            theme === "dark" ? "bg-[#2a2a2a]" : "bg-[#f6f6f6]"
           }`}
           aria-label={`Service: ${getValue(service.title, language)}`}
         >
@@ -430,10 +453,107 @@ const Modal = ({
   );
 };
 
+const faqs: FaqItem[] = [
+  {
+    question: (lang) =>
+      lang === "tr"
+        ? "Bu hizmetten nasıl bir sonuç alırım?"
+        : "What kind of results will I get from this service?",
+    answer: (lang) =>
+      lang === "tr"
+        ? "Hedefin ne olursa olsun — ister kilo almak, ister kilo vermek, ister şekillenip sıkılaşmak — sana özel olarak belirlediğimiz yol haritasıyla profesyonel bir şekilde ilerliyoruz. Senin beklentilerin ve bu sporun sana kazandırabilecekleriyle ortak noktada buluşarak, süreci hem verimli hem de sürdürülebilir hale getiriyoruz. Bu sayede net ve tatmin edici sonuçlara ulaşman mümkün oluyor."
+        : "Whatever your goal is — whether it’s gaining weight, losing weight, shaping up and tightening up — we progress professionally with a roadmap we have specifically designed for you. We make the process both efficient and sustainable by meeting your expectations and what this sport can bring to you. In this way, it is possible for you to achieve clear and satisfying results.",
+  },
+  {
+    question: (lang) =>
+      lang === "tr"
+        ? "Antrenman programı bana özel mi hazırlanıyor?"
+        : "Is the training program prepared specifically for me?",
+    answer: (lang) =>
+      lang === "tr"
+        ? "Evet, program tamamen sana özel hazırlanıyor. Önceliğimiz senin hedeflerin olmak üzere; yaşın, cinsiyetin, vücut tipin, mevcut fiziksel aktivite durumun, yaşam tarzın ve varsa sağlık problemlerin gibi birçok faktörü göz önünde bulundurarak sana en uygun planı oluşturuyorum. Böylece sürecin hem güvenli hem de etkili geçmesini sağlıyoruz."
+        : "Yes, the program is prepared completely specifically for you. Our priority is your goals; I create the most suitable plan for you by considering many factors such as your age, gender, body type, current physical activity status, lifestyle and health problems if any. In this way, we ensure that the process is both safe and effective.",
+  },
+  {
+    question: (lang) =>
+      lang === "tr"
+        ? "Daha önce hiç spor yapmadım, bu sistem bana uygun mu?"
+        : "I have never done sports before, is this system suitable for me?",
+    answer: (lang) =>
+      lang === "tr"
+        ? "Kesinlikle uygun, hatta çoğu zaman daha da gerekli. Daha önce spor yapmamış bireylerin, egzersiz adaptasyon sürecini sağlıklı geçirebilmesi, sakatlanma riskini en aza indirebilmesi ve temel kuvvet gelişimini doğru şekilde inşa edebilmesi için profesyonel rehberlik büyük önem taşır. Bu sistem, bilgiye doğrudan ulaşmanı ve hedeflerine kontrollü ama etkili bir şekilde ilerlemeni sağlar. Bu da süreci hem daha güvenli hem de daha hızlı hale getirir."
+        : "It is absolutely appropriate, and often even more necessary. Professional guidance is of great importance for individuals who have not done sports before to have a healthy adaptation process, to minimize the risk of injury and to build basic strength development correctly. This system allows you to access information directly and progress towards your goals in a controlled but effective way. This makes the process both safer and faster.",
+  },
+  {
+    question: (lang) =>
+      lang === "tr"
+        ? "Uzaktan eğitimde gerçekten ilerleme kaydedebilir miyim?"
+        : "Can I really make progress with distance learning?",
+    answer: (lang) =>
+      lang === "tr"
+        ? "Elbette, ancak bu tamamen kişinin sürece olan bağlılığıyla ilgilidir. Uzaktan eğitim, birebir personal trainer eşliğinde çalışmakla aynı değilmiş gibi görünse de, sana özel hazırlanmış bir programın olması ve her zaman ulaşabileceğin bir eğitmen desteğiyle süreç çok daha etkili hale gelir. Sorularına anında cevap alabilmen, yönsüz ve tek başına çalışmaktan çok daha hızlı ve sağlıklı ilerlemeni sağlar."
+        : "Of course, but this is entirely dependent on the person’s commitment to the process. Although distance learning may not seem like the same as working with a personal trainer, having a program specifically designed for you and the support of a trainer you can always reach makes the process much more effective. Getting answers to your questions instantly allows you to progress much faster and healthier than working alone and without direction.",
+  },
+  {
+    question: (lang) =>
+      lang === "tr"
+        ? "Kaç günde bir antrenman yapmam gerekecek?"
+        : "How many days a week will I need to train?",
+    answer: (lang) =>
+      lang === "tr"
+        ? "Antrenman sıklığı; hedeflerine, mevcut fiziksel durumuna, günlük yaşam tempona ve egzersiz geçmişine göre belirlenir. Bu nedenle, en verimli sonuç için bu kararı eğitmeninle birlikte planlamak en doğrusudur. Böylece sürdürülebilir ve sana uygun bir antrenman rutini oluşturulabilir."
+        : "Training frequency is determined by your goals, current physical condition, daily life tempo and exercise history. Therefore, for the most efficient results, it is best to plan this decision with your trainer. In this way, a sustainable and suitable training routine can be created for you.",
+  },
+  {
+    question: (lang) =>
+      lang === "tr"
+        ? "Programların içinde beslenme önerileri de var mı?"
+        : "Are there nutritional recommendations in the programs?",
+    answer: (lang) =>
+      lang === "tr"
+        ? "Detaylı ve kişiye özel beslenme programları, işinin uzmanı olan diyetisyenlerin alanına girer. Bir antrenör olarak benim görevim, sana sağlıklı beslenme konusunda doğru yönlendirmeler yapmak, beslenme alışkanlıklarını takip etmek ve gerektiğinde pratik tavsiyeler sunmaktır. Ancak detaylı diyet planları yalnızca lisanslı diyetisyenler tarafından hazırlanabilir; bu konuda yetki ve bilgi sınırları bulunur."
+        : "Detailed and personalized nutrition programs are the domain of dietitians who are experts in their field. As a trainer, my job is to guide you in a healthy way, monitor your eating habits and provide practical advice when necessary. However, detailed diet plans can only be prepared by licensed dietitians; there are limits to their authority and knowledge in this regard.",
+  },
+  {
+    question: (lang) =>
+      lang === "tr"
+        ? "Motivasyonumu kaybedersem ne olur?"
+        : "What happens if I lose motivation?",
+    answer: (lang) =>
+      lang === "tr"
+        ? "Motivasyon elbette önemli, ancak disiplin ve sürdürülebilirlik çok daha kritik faktörlerdir. Bizim önceliğimiz her zaman disiplinli bir alışkanlık oluşturmak ve sürdürülebilirliği sağlamak olacaktır. Motivasyon iniş çıkış yaşayabilir; önemli olan, disiplin sayesinde hedefe istikrarlı bir şekilde ilerleyebilmektir. Bu yaklaşım, kalıcı ve anlamlı sonuçlar getirir."
+        : "Motivation is certainly important, but discipline and sustainability are much more critical factors. Our priority will always be to create a disciplined habit and ensure sustainability. Motivation can fluctuate; what is important is to be able to move steadily towards the goal through discipline. This approach brings permanent and meaningful results.",
+  },
+  {
+    question: (lang) =>
+      lang === "tr"
+        ? "Bu sistem sadece fiziksel değişim mi sağlar?"
+        : "Does this system only provide physical change?",
+    answer: (lang) =>
+      lang === "tr"
+        ? "Sporun en temel faydası fiziksel değişimdir; kas gelişimi, yağ kaybı ve vücut şekillendirme. Ancak düzenli ve doğru yapılan egzersizler, yaşlanma sürecini yavaşlatır, eklem ve kas-iskelet sistemi rahatsızlıklarının önüne geçer. Ayrıca sağlığınızı destekler, enerjinizi artırır, özgüveninizi yükseltir ve ruh halinizi olumlu etkiler. Yani bu sistem, hem fiziksel hem de uzun vadeli sağlık açısından bütünsel bir dönüşüm sunar."
+        : "The most basic benefit of sports is physical change; muscle development, fat loss and body shaping. However, regular and correct exercises slow down the aging process, prevent joint and musculoskeletal disorders. It also supports your health, increases your energy, increases your self-confidence and positively affects your mood. In other words, this system offers a holistic transformation in terms of both physical and long-term health.",
+  },
+];
+
 export default function Home() {
   const [theme, setTheme] = useState("light");
   const [language, setLanguage] = useState<LanguageKey>("tr");
   const [isOpen, setIsOpen] = useState(false);
+  const [openAll, setOpenAll] = useState(false);
+  const [openStates, setOpenStates] = useState(faqs.map(() => false));
+
+  const toggleItem = (index: number) => {
+    const updated = [...openStates];
+    updated[index] = !updated[index];
+    setOpenStates(updated);
+  };
+
+  const toggleAll = () => {
+    const value = !openAll;
+    setOpenAll(value);
+    setOpenStates(faqs.map(() => value));
+  };
 
   const form = useRef<HTMLFormElement | null>(null);
 
@@ -485,12 +605,19 @@ export default function Home() {
     }
   };
 
+  const handlePackages = () => {
+    const element = document.getElementById("Private Lesson Packages");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const currentTranslations = translations[language];
 
   const instaLinks = [
-    "https://www.instagram.com/p/DHwBE_NNqsl/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    "https://www.instagram.com/p/DEFfbLKIlkC/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    "https://www.instagram.com/p/C_A9BlGo2fT/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    "https://www.instagram.com/p/DF5pExqokZ4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    "https://www.instagram.com/p/C4bCXwDIYfW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    "https://www.instagram.com/p/DARZR1kIj_B/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
   ];
 
   useEffect(() => {
@@ -504,16 +631,10 @@ export default function Home() {
         document.body.appendChild(script);
       }
     }
-  }, []);
+  }, [theme, language]);
 
   return (
-    <div
-      className={`min-h-screen min-w-full flex flex-col ${
-        theme === "dark"
-          ? "bg-[#313131] duration-200 transform transition-all"
-          : "bg-[#f1f1f1] duration-200 transform transition-all"
-      }`}
-    >
+    <div className={`min-h-screen min-w-full flex flex-col`}>
       <section id="header" className="z-10">
         <div className="fixed min-w-full md:px-6 flex flex-row justify-between items-center">
           <div className="cursor-pointer" title="Abdullah Aşık">
@@ -560,7 +681,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="hero" className="relative px-10 py-10">
+      <section
+        id="hero"
+        className={`relative px-10 py-10 ${
+          theme === "dark"
+            ? "bg-[#1a1a1a] duration-200 transform transition-all"
+            : "bg-[#f0f0f0] duration-200 transform transition-all"
+        }`}
+      >
         <div className="min-w-full min-h-auto flex flex-col md:flex-row items-center md:-mt-16">
           <div className="">
             <Image
@@ -604,7 +732,13 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="w-full h-auto flex flex-col items-center justify-center">
+      <div
+        className={`w-full h-auto flex flex-col items-center justify-center border-none ${
+          theme === "dark"
+            ? "bg-[#1a1a1a] duration-200 transform transition-all border-none"
+            : "bg-[#f0f0f0] duration-200 transform transition-all border-none"
+        }`}
+      >
         <span
           className={`${
             theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
@@ -629,7 +763,14 @@ export default function Home() {
         </span>
       </div>
 
-      <section id="About" className="px-10 py-20">
+      <section
+        id="About"
+        className={`px-10 py-20 ${
+          theme === "dark"
+            ? "bg-[#1a1a1a] duration-200 transform transition-all"
+            : "bg-[#f6f6f6] duration-200 transform transition-all"
+        }`}
+      >
         <div className="flex flex-col items-center justify-center">
           <h2
             className={` font-semibold text-2xl ${
@@ -714,7 +855,9 @@ export default function Home() {
       <section
         id="Private Lesson Packages"
         className={`px-10 py-20 ${
-          theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+          theme === "dark"
+            ? "text-[#f1f1f1] bg-[#1a1a1a] duration-200 transform transition-all"
+            : "text-[#313131] bg-[#f0f0f0] duration-200 transform transition-all"
         }`}
       >
         <div className="">
@@ -731,7 +874,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="Testimonials" className="px-10 py-20">
+      {/* <section
+        id="Testimonials"
+        className={`px-10 py-20 ${
+          theme === "dark"
+            ? "bg-[#1a1a1a] duration-200 transform transition-all"
+            : "bg-[#f6f6f6] duration-200 transform transition-all"
+        }`}
+      >
         <div className="overflow-hidden">
           <h2
             className={`text-2xl md:text-2xl font-semibold py-6 text-center ${
@@ -795,9 +945,16 @@ export default function Home() {
             ))}
           </Swiper>
         </div>
-      </section>
+      </section> */}
 
-      <section id="instaPost" className="px-10 py-20">
+      <section
+        id="instaPost"
+        className={`px-10 py-20 ${
+          theme === "dark"
+            ? "bg-[#1a1a1a] duration-200 transform transition-all"
+            : "bg-[#f0f0f0] duration-200 transform transition-all"
+        }`}
+      >
         <h2
           className={`text-2xl md:text-2xl font-semibold py-6 text-center ${
             theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
@@ -806,7 +963,7 @@ export default function Home() {
           {currentTranslations.Insta(language)}
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {instaLinks.map((link, index) => (
             <div
               key={index}
@@ -827,9 +984,90 @@ export default function Home() {
       </section>
 
       <section
+        id="faq"
+        className={`px-10 py-20 ${
+          theme === "dark"
+            ? "bg-[#1a1a1a] duration-200 transform transition-all"
+            : "bg-[#f6f6f6] duration-200 transform transition-all"
+        }`}
+      >
+        <div className="flex justify-center">
+          <h1 className="max-w-fit text-2xl md:text-3xl font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-2 rounded-md text-center">
+            {currentTranslations.faqs(language)}
+          </h1>
+        </div>
+        <div className="flex flex-col md:flex-row justify-between items-center mb-3 my-10 md:px-40 md:my-10">
+          <p
+            className={`mb-10 md:mb-0 text-center ${
+              theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+            }`}
+          >
+            {currentTranslations.faqQ(language)}{" "}
+            <a
+              href="https://wa.me/905527787737"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`font-bold text-xl ${
+                theme === "dark"
+                  ? "text-green-300 hover:text-green-400"
+                  : "text-green-500 hover:text-green-600"
+              }`}
+            >
+              {currentTranslations.faqW(language)}
+            </a>
+          </p>
+          <button
+            onClick={toggleAll}
+            className={`flex items-center hover:underline cursor-pointer ${
+              theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+            }`}
+          >
+            {language === "tr"
+              ? "Tümünü Aç / Tümünü Kapat"
+              : "Open All / Close All"}
+            <FiChevronDown className="ml-1" />
+          </button>
+        </div>
+        <div>
+          {faqs.map((faq, index) => (
+            <div key={index} className="rounded-md mb-4 md:px-40">
+              <button
+                onClick={() => toggleItem(index)}
+                className={`w-full flex justify-between items-center cursor-pointer p-4 ${
+                  theme === "dark"
+                    ? "bg-[#2a2a2a] text-[#f1f1f1]"
+                    : "border bg-[#ececec] text-[#313131]"
+                }`}
+              >
+                <span className="text-left font-medium">
+                  {faq.question(language)}
+                </span>
+                {openStates[index] ? (
+                  <FiMinus className="w-4 h-4" />
+                ) : (
+                  <FiPlus className="w-4 h-4" />
+                )}
+              </button>
+              {openStates[index] && (
+                <div
+                  className={`px-4 pb-4 ${
+                    theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+                  }`}
+                >
+                  {faq.answer(language)}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section
         id="contact"
         className={`px-10 py-20 ${
-          theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+          theme === "dark"
+            ? "text-[#f1f1f1] bg-[#1a1a1a] duration-200 transform transition-all"
+            : "text-[#313131] bg-[#f0f0f0] duration-200 transform transition-all"
         }`}
       >
         <div>
@@ -905,34 +1143,42 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="footer" className="px-10 py-4">
+      <section
+        id="footer"
+        className={`px-10 py-20 ${
+          theme === "dark"
+            ? "bg-[#1a1a1a] duration-200 transform transition-all"
+            : "bg-[#f6f6f6] duration-200 transform transition-all"
+        }`}
+      >
         <footer
           className={`${
             theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
           }`}
         >
-          {/* <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">
-            {currentTranslations.title(language)}
-          </h2> */}
-          <div className="flex flex-col md:flex-row justify-between md:gap-10 md:items-start py-20">
+          <div className="flex flex-col md:flex-row justify-around md:gap-10 md:items-start py-20">
             <div className="flex flex-col items-start py-4">
               <h3 className="font-semibold py-2 text-xl">
-                {currentTranslations.servicesTitle(language)}
+                {currentTranslations.QAccess(language)}
               </h3>
               {services.map((service) => (
-                <span key={service.id}>
+                <span
+                  key={service.id}
+                  className="cursor-pointer"
+                  onClick={() => handlePackages()}
+                >
                   {getValue(service.title, language)}
                 </span>
               ))}
             </div>
-            <div className="flex flex-col items-start py-4">
+            {/* <div className="flex flex-col items-start py-4">
               <h3 className="font-semibold py-2 text-xl">
                 {currentTranslations.clientStories(language)}
               </h3>
               <span onClick={handleReferences} className="cursor-pointer">
                 {currentTranslations.references(language)}
               </span>
-            </div>
+            </div> */}
             <div className="flex flex-col items-start py-4">
               <h3 className="font-semibold py-2 text-xl">
                 {currentTranslations.contactInfo(language)}
@@ -948,24 +1194,27 @@ export default function Home() {
                 <a
                   href="https://www.instagram.com/pt.abdullahasik/"
                   target="_blank"
+                  className="flex flex-row justify-center items-center"
                 >
-                  Instagram
+                  <FaInstagram className="" /> Instagram
                 </a>
               </span>
               <span className="hover:text-red-300">
                 <a
                   href="https://www.instagram.com/pt.abdullahasik/"
                   target="_blank"
+                  className="flex flex-row justify-center items-center"
                 >
-                  TikTok
+                  <FaTiktok className="" /> TikTok
                 </a>
               </span>
               <span className="hover:text-red-300">
                 <a
                   href="https://www.instagram.com/pt.abdullahasik/"
                   target="_blank"
+                  className="flex flex-row justify-center items-center"
                 >
-                  X (Twitter)
+                  <FaSquareXTwitter className="" /> X (Twitter)
                 </a>
               </span>
             </div>

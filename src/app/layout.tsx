@@ -25,6 +25,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          rel="icon"
+          type="image/png"
+          href={`${
+            process.env.NODE_ENV === "production"
+              ? "./public/black-logo.png"
+              : ""
+          }./public/black-logo.png`}
+          sizes="48x48"
+        />
+        <link rel="shortcut icon" href="./public/black-logo.png" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
