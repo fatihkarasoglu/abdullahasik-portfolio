@@ -1,21 +1,41 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import { Inter } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.senin-domainin.com"), // domainini buraya yaz
   title: "Abdullah Aşık | Profesyonel Antrenör",
-  description: "Created by Abdullah Aşık",
+  description:
+    "Online ve yüz yüze antrenman programları ile hedeflerine ulaş. Şimdi Abdullah Aşık ile tanış!",
+  openGraph: {
+    title: "Abdullah Aşık | Personal Trainer",
+    description:
+      "Kişisel antrenman, online koçluk ve beslenme planlamasıyla sağlıklı yaşamın anahtarı.",
+    url: "https://www.senin-domainin.com",
+    siteName: "Abdullah Aşık",
+    images: [
+      {
+        url: "/black-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Abdullah Aşık - Personal Trainer",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Abdullah Aşık | Personal Trainer",
+    description:
+      "Profesyonel antrenman ve motivasyon desteği. Formunu şimdi kazan!",
+    images: ["/black-logo.png"],
+  },
 };
 
 export default function RootLayout({
@@ -24,23 +44,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="tr" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="preload" as="image" href="/favicon.ico" sizes="any" />
         <link
-          rel="icon"
+          rel="preload"
+          as="image"
           type="image/png"
-          href={`${
-            process.env.NODE_ENV === "production"
-              ? "./public/black-logo.png"
-              : ""
-          }./public/black-logo.png`}
+          href="/black-logo.png"
           sizes="48x48"
         />
-        <link rel="shortcut icon" href="./public/black-logo.png" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>

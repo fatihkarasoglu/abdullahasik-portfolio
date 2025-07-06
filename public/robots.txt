@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.senin-site-adresin.com/sitemap.xml

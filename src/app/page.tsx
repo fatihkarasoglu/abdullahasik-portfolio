@@ -10,16 +10,15 @@ import React, {
 import ReactDOM from "react-dom";
 import { GiConfirmed } from "react-icons/gi";
 import { FiPlus, FiMinus, FiChevronDown } from "react-icons/fi";
-import { FaInstagram, FaTiktok, FaSquareXTwitter } from "react-icons/fa6";
+import { FaInstagram, FaTiktok } from "react-icons/fa6";
 import emailjs from "@emailjs/browser";
 import ThemeSwitch from "./components/ThemeSwitch";
 import Image from "next/image";
 import whiteLogo from "../../public/white-logo.png";
 import blackLogo from "../../public/black-logo.png";
 import main from "../../public/5.png";
-// import { FaMale, FaFemale } from "react-icons/fa";
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -270,112 +269,88 @@ const services: Service[] = [
   },
 ];
 
-// const stories = [
-//   {
-//     id: 1,
-//     icon: <FaMale className="h-8 w-8 mb-3 text-blue-500" />,
-//     title: "John M.",
-//     description: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-//     quote: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "'The best investment I've ever made was in my health."
-//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-//   },
-//   {
-//     id: 2,
-//     icon: <FaFemale className="h-8 w-8 mb-3 text-pink-500" />,
-//     title: "Sarah J.",
-//     description: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-//     quote: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "'The best investment I've ever made was in my health."
-//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-//   },
-//   {
-//     id: 3,
-//     icon: <FaMale className="h-8 w-8 mb-3 text-gray-500" />,
-//     title: "Mike R.",
-//     description: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-//     quote: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "'The best investment I've ever made was in my health."
-//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-//   },
-//   {
-//     id: 4,
-//     icon: <FaFemale className="h-8 w-8 mb-3 text-green-500" />,
-//     title: "Emma L.",
-//     description: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-//     quote: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "'The best investment I've ever made was in my health."
-//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-//   },
-//   {
-//     id: 5,
-//     icon: <FaMale className="h-8 w-8 mb-3 text-purple-500" />,
-//     title: "David B.",
-//     description: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-//     quote: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "'The best investment I've ever made was in my health."
-//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-//   },
-//   {
-//     id: 6,
-//     icon: <FaFemale className="h-8 w-8 mb-3 text-blue-400" />,
-//     title: "Lauren H.",
-//     description: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-//     quote: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "'The best investment I've ever made was in my health."
-//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-//   },
-//   {
-//     id: 7,
-//     icon: <FaMale className="h-8 w-8 mb-3 text-pink-400" />,
-//     title: "Tom A.",
-//     description: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-//     quote: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "'The best investment I've ever made was in my health."
-//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-//   },
-//   {
-//     id: 8,
-//     icon: <FaFemale className="h-8 w-8 mb-3 text-purple-400" />,
-//     title: "Kate P.",
-//     description: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
-//         : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
-//     quote: (lang: LanguageKey) =>
-//       lang === "en"
-//         ? "'The best investment I've ever made was in my health."
-//         : "Hayatımda yaptığım en iyi yatırım sağlığıma oldu",
-//   },
-// ];
+const stories = [
+  {
+    id: 1,
+    title: "Beyza Nur Ş.",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "Abdullah Hoca supported me a lot during my weight loss and health recovery process. He is very professional and knowledgeable in his job, he always keeps his knowledge up to date. He prepared individual programs considering my health problems and helped me develop. He motivated me even when I was discouraged while doing this, I thank him very much 🌸🙏🏻"
+        : "Abdullah Hoca, kilo verme ve sağlığıma yeniden kavuşma sürecimde bana çok destek oldu. İşinde çok profesyonel ve bilgili, bilgisini her daim güncel tutan biri. Her seferinde yaşadığım sağlık sorunlarımı da gözeterek bireysel programlar hazırlayıp gelişimime yardımcı oldu. Bunu yaparken benim yıldığım zamanlarda bile motive etti, kendisine çok teşekkür ederim 🌸🙏🏻",
+  },
+  {
+    id: 2,
+    title: "Abdulkadir A.",
+    description: (lang: LanguageKey) =>
+      lang === "en"
+        ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
+        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "Abdullah Aşık, who can be safely recommended to anyone looking for a healthy and effective sports experience in Adana, has expertly answered all my questions and requests throughout my training period of about a year. With the training programs he prepared based on scientific data, he helped me overcome my weight gain problem, which had become a nightmare for me, quickly and healthily. Abdullah Hoca, a sports trainer whose professional approach and knowledge I continue to benefit from, has not only made sports more enjoyable and productive for me, but also encouraged me to set new goals for myself."
+        : "Adana’da sağlıklı ve etkili bir spor deneyimi arayan herkes için güvenle tavsiye edilebilecek bir isim olan Abdullah Aşık, yaklaşık bir yıllık antrenman sürecim boyunca her türlü soru ve talebime uzmanlıkla yanıt vermiştir. Bilimsel verilere dayalı olarak hazırladığı antrenman programları ile benim için kabusa dönüşen kilo alma sorunumu hızlı ve sağlıklı şekilde aşmamı sağlamıştır. Profesyonel yaklaşımı ve bilgi birikiminden faydalanmayı sürdürdüğüm bir spor eğitmeni olan Abdullah hoca, sporu benim için daha keyifli ve verimli hale getirmekle kalmamış, kendime yeni hedefler belirlemem içinde teşvik etmiştir.",
+  },
+  {
+    id: 3,
+    title: "Neslihan T.",
+    description: (lang: LanguageKey) =>
+      lang === "en"
+        ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
+        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "Even though I can't go to the gym very regularly, my teacher's interest, discipline, devoted and respectful approach has always been motivating. Thanks to his knowledge and professionalism in his field, I feel better both physically and mentally. He really does his job properly.🙏🏻"
+        : "Her ne kadar spora çok düzenli gidemesem de hocamın ilgisi, disiplini ,özverili ve saygılı yaklaşımı her zaman motive edici oldu. Alanındaki bilgisi ve profesyonelliği sayesinde kendimi hem fiziksel hem mental açıdan daha iyi hissediyorum . Gerçekten işini layığıyla yapan biri.🙏🏻",
+  },
+  {
+    id: 4,
+    title: "Zehra Ş.",
+    description: (lang: LanguageKey) =>
+      lang === "en"
+        ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
+        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "Abdullah Hoca was also my preferred teacher in group lessons. Before we started lessons together, I was uncomfortable with my knees. Now, I have no pain and can kneel comfortably. All that aside, his smiling face and energy are enough."
+        : "Abdullah hoca gurup derslerinde de tercih ettiğim bir hocaydı.Birlikte derslere başlamadan önce dizlerimden rahatsızdım. şimdi ise ağrım kalmadığı gibi rahatlıkla diz çökebiliyorum.Hepsi bir yana güler yüzüyle verdiği enerji yeter",
+  },
+  {
+    id: 5,
+    title: "Emine Ferzan Ş.",
+    description: (lang: LanguageKey) =>
+      lang === "en"
+        ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
+        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "Abdullah Aşık is the embodiment of patience and knowledge. He analyzes his student's physical and mental needs with great accuracy and can create programs that are suitable for him, thus providing maximum efficiency. In addition to this, he also improves you by always equipping himself with new information. We have been working together for years and I would like to continue to progress together. He is a well-mannered instructor who is aware that the brain and heart are also muscles and that they are as important as other muscle groups, and who knows when and how to act in human relations."
+        : "Abdullah Aşık sabrin ve bilginin vucut bulmus halidir. Öğrencisinin fiziksel ve zihinsel ihtiyaçlarini muhteşem bir dogrulukla analiz ederek ona uygun programlari cikararak maksimum verimlilik sağlayabiliyor. Bunun yani sira kendini her daim yeni bilgilerle donatmasi da sizi geliştiriyor. Yillardir beraber çalışıyoruz ve bundan sonra da beraber ilerlemek isterim. Beynin ve kalbin de bir kas oldugunun ve onlarin da en az diger kas gruplari kadar önemli olduğunun farkinda olan, düzeyli, insan iliskilerinde ne zaman nasil davranmasini bilen bir eğitmen.",
+  },
+  {
+    id: 6,
+    title: "Eylül A.",
+    description: (lang: LanguageKey) =>
+      lang === "en"
+        ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
+        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "We have finished our lessons now, not only physically but also mentally I feel much better because of your efforts. Thanks to your patient approach, correct guidance and always motivating words, I have made sports an indispensable part of my life. I am so glad that our paths crossed, thank you very much for your efforts and patience 🙏🏻😊"
+        : "Derslerimizi bitirdik artık , sadece fiziksel olarak değil, mental anlamda da kendimi çok daha iyi hissetmem de emeğiniz çok . Sabırlı yaklaşımınız , doğru yönlendirmeleriniz ve her zaman motive edici sözleriniz sayesinde sporu hayatımın vazgeçilmez parçası haline getirdim. Sizinle iyi ki yollarımız kesişmiş emeğiniz ve sabrınız için çok teşekkür ederim 🙏🏻😊",
+  },
+  {
+    id: 7,
+    title: "Abdullah G.",
+    description: (lang: LanguageKey) =>
+      lang === "en"
+        ? "Lost 30 lbs in 3 months and gained muscle definition through personalized training."
+        : "Progresif direnç antrenmanı ile kas kütlesi ve gücü geliştirin.",
+    quote: (lang: LanguageKey) =>
+      lang === "en"
+        ? "Since I have been working with Abdullah Hoca, I have gained more energy, strength and efficiency in my daily life, and I thank him for his training sessions."
+        : "Abdullah hoca ile çalıştığımdan beri gün içerisinde olan enerjim gücüm ve günlük hayattaki verimliliğim artı kendisine antrenmanları için teşekkür ediyorum.",
+  },
+];
 
 type PackageCardWithDetailsProps = {
   theme: string;
@@ -644,6 +619,7 @@ export default function Home() {
                 alt="Abdullah Aşık Logo"
                 width={85}
                 height={85}
+                priority
               />
             ) : (
               <Image
@@ -651,6 +627,7 @@ export default function Home() {
                 alt="Abdullah Aşık Logo"
                 width={85}
                 height={85}
+                priority
               />
             )}
           </div>
@@ -690,7 +667,7 @@ export default function Home() {
         }`}
       >
         <div className="min-w-full min-h-auto flex flex-col md:flex-row items-center md:-mt-16">
-          <div className="">
+          <div className="py-6 md:py-0">
             <Image
               src={main}
               alt="Abdullah Aşık Logo"
@@ -874,9 +851,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* <section
+      <section
         id="Testimonials"
-        className={`px-10 py-20 ${
+        className={`px-6 py-16 md:px-10 md:py-20 ${
           theme === "dark"
             ? "bg-[#1a1a1a] duration-200 transform transition-all"
             : "bg-[#f6f6f6] duration-200 transform transition-all"
@@ -892,31 +869,30 @@ export default function Home() {
           </h2>
           <Swiper
             modules={[Navigation]}
-            navigation={true}
+            navigation={false}
             spaceBetween={20}
-            slidesPerView={1}
+            slidesPerView={1.2}
             breakpoints={{
               768: {
                 slidesPerView: 2,
-                spaceBetween: 30,
+                spaceBetween: 20,
               },
               1024: {
                 slidesPerView: 3,
-                spaceBetween: 50,
+                spaceBetween: 20,
               },
             }}
           >
             {stories.map((story, index) => (
               <SwiperSlide
                 key={index}
-                className={`p-6 rounded-xl shadow-lg cursor-pointer ${
+                className={`p-4 rounded-xl shadow-lg cursor-pointer ${
                   theme === "dark"
                     ? "bg-[#2a2a2a] text-[#f1f1f1]"
                     : "border bg-[#ececec] text-[#313131]"
                 }`}
               >
-                <div className="flex items-center mb-4">
-                  {story.icon}
+                <div className="flex justify-center items-center mb-4">
                   <h3
                     className={`text-lg md:text-xl font-semibold ml-3  ${
                       theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
@@ -925,27 +901,27 @@ export default function Home() {
                     {story.title}
                   </h3>
                 </div>
-                <p
+                {/* <p
                   className={`text-sm mb-4 ${
                     theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
                   }`}
                 >
                   {story.description(language)}
+                </p> */}
+                <p
+                  className={`p-4 text-center ${
+                    theme === "dark"
+                      ? "text-[#f1f1f1] bg-[#313131]"
+                      : "text-[#313131] bg-[#ececec]"
+                  }`}
+                >
+                  {story.quote(language)}
                 </p>
-                <div className="bg-blue-200 dark:bg-blue-900/20 p-3 rounded-lg">
-                  <p
-                    className={` ${
-                      theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
-                    }`}
-                  >
-                    {story.quote(language)}
-                  </p>
-                </div>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
-      </section> */}
+      </section>
 
       <section
         id="instaPost"
@@ -992,7 +968,7 @@ export default function Home() {
         }`}
       >
         <div className="flex justify-center">
-          <h1 className="max-w-fit text-2xl md:text-3xl font-semibold text-white bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-2 rounded-md text-center">
+          <h1 className="max-w-fit text-2xl md:text-3xl font-semibold text-white bg-gradient-to-r from-red-700 to-red-400 px-6 py-2 rounded-md text-center">
             {currentTranslations.faqs(language)}
           </h1>
         </div>
@@ -1171,14 +1147,14 @@ export default function Home() {
                 </span>
               ))}
             </div>
-            {/* <div className="flex flex-col items-start py-4">
+            <div className="flex flex-col items-start py-4">
               <h3 className="font-semibold py-2 text-xl">
                 {currentTranslations.clientStories(language)}
               </h3>
               <span onClick={handleReferences} className="cursor-pointer">
                 {currentTranslations.references(language)}
               </span>
-            </div> */}
+            </div>
             <div className="flex flex-col items-start py-4">
               <h3 className="font-semibold py-2 text-xl">
                 {currentTranslations.contactInfo(language)}
@@ -1206,15 +1182,6 @@ export default function Home() {
                   className="flex flex-row justify-center items-center"
                 >
                   <FaTiktok className="" /> TikTok
-                </a>
-              </span>
-              <span className="hover:text-red-300">
-                <a
-                  href="https://www.instagram.com/pt.abdullahasik/"
-                  target="_blank"
-                  className="flex flex-row justify-center items-center"
-                >
-                  <FaSquareXTwitter className="" /> X (Twitter)
                 </a>
               </span>
             </div>
