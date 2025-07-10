@@ -517,6 +517,11 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [openAll, setOpenAll] = useState(false);
   const [openStates, setOpenStates] = useState(faqs.map(() => false));
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const toggleExpanded = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
 
   const toggleItem = (index: number) => {
     const updated = [...openStates];
@@ -870,7 +875,8 @@ export default function Home() {
           <Swiper
             modules={[Navigation]}
             navigation={false}
-            spaceBetween={20}
+            spaceBetween={30}
+            autoHeight={false}
             slidesPerView={1.2}
             breakpoints={{
               768: {
@@ -883,42 +889,54 @@ export default function Home() {
               },
             }}
           >
-            {stories.map((story, index) => (
-              <SwiperSlide
-                key={index}
-                className={`p-4 rounded-xl shadow-lg cursor-pointer ${
-                  theme === "dark"
-                    ? "bg-[#2a2a2a] text-[#f1f1f1]"
-                    : "border bg-[#ececec] text-[#313131]"
-                }`}
-              >
-                <div className="flex justify-center items-center mb-4">
-                  <h3
-                    className={`text-lg md:text-xl font-semibold ml-3  ${
-                      theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+            {stories.map((story, index) => {
+              const isExpanded = expandedIndex === index;
+              return (
+                <SwiperSlide
+                  key={index}
+                  className={`p-4 rounded-xl shadow-lg h-[250px] overflow-hidden relative cursor-pointer ${
+                    theme === "dark"
+                      ? "bg-[#2a2a2a] text-[#f1f1f1]"
+                      : "border bg-[#ececec] text-[#313131]"
+                  }`}
+                >
+                  <div className="flex justify-center items-center mb-2">
+                    <h3
+                      className={`text-lg md:text-xl font-semibold ml-3 ${
+                        theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+                      }`}
+                    >
+                      {story.title}
+                    </h3>
+                  </div>
+
+                  <p
+                    className={`px-2 text-center transition-all duration-300 ease-in-out ${
+                      isExpanded ? "line-clamp-none" : "line-clamp-4"
+                    } ${
+                      theme === "dark"
+                        ? "text-[#f1f1f1] bg-[#313131]"
+                        : "text-[#313131] bg-[#ececec]"
                     }`}
                   >
-                    {story.title}
-                  </h3>
-                </div>
-                {/* <p
-                  className={`text-sm mb-4 ${
-                    theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
-                  }`}
-                >
-                  {story.description(language)}
-                </p> */}
-                <p
-                  className={`p-4 text-center ${
-                    theme === "dark"
-                      ? "text-[#f1f1f1] bg-[#313131]"
-                      : "text-[#313131] bg-[#ececec]"
-                  }`}
-                >
-                  {story.quote(language)}
-                </p>
-              </SwiperSlide>
-            ))}
+                    {story.quote(language)}
+                  </p>
+
+                  {story.quote(language).length > 100 && (
+                    <div className="text-center mt-2">
+                      <button
+                        onClick={() => toggleExpanded(index)}
+                        className={`text-sm underline transition hover:text-blue-600 ${
+                          theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
+                        }`}
+                      >
+                        {isExpanded ? "Daha az göster" : "Devamını oku"}
+                      </button>
+                    </div>
+                  )}
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
         </div>
       </section>
@@ -1160,7 +1178,7 @@ export default function Home() {
                 {currentTranslations.contactInfo(language)}
               </h3>
               <span>+90 552 778 77 37</span>
-              <span>email@gmail.com</span>
+              <span>abdullahasik71@gmail.com</span>
             </div>
             <div className="flex flex-col items-start py-4">
               <h3 className="font-semibold py-2 text-xl">
@@ -1168,7 +1186,7 @@ export default function Home() {
               </h3>
               <span className="hover:text-red-300">
                 <a
-                  href="https://www.instagram.com/pt.abdullahasik/"
+                  href="https://www.instagram.com/pt.abdullahasik?igsh=MThjb3N0Zzk0NTEzZQ=="
                   target="_blank"
                   className="flex flex-row justify-center items-center"
                 >
@@ -1177,7 +1195,7 @@ export default function Home() {
               </span>
               <span className="hover:text-red-300">
                 <a
-                  href="https://www.instagram.com/pt.abdullahasik/"
+                  href="https://www.tiktok.com/@pt.abdullahasik"
                   target="_blank"
                   className="flex flex-row justify-center items-center"
                 >
