@@ -21,6 +21,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import dynamic from "next/dynamic";
+import ReactStars from "react-stars";
 
 type LanguageKey = "en" | "tr";
 
@@ -277,6 +279,15 @@ const stories = [
       lang === "en"
         ? "Abdullah Hoca supported me a lot during my weight loss and health recovery process. He is very professional and knowledgeable in his job, he always keeps his knowledge up to date. He prepared individual programs considering my health problems and helped me develop. He motivated me even when I was discouraged while doing this, I thank him very much 🌸🙏🏻"
         : "Abdullah Hoca, kilo verme ve sağlığıma yeniden kavuşma sürecimde bana çok destek oldu. İşinde çok profesyonel ve bilgili, bilgisini her daim güncel tutan biri. Her seferinde yaşadığım sağlık sorunlarımı da gözeterek bireysel programlar hazırlayıp gelişimime yardımcı oldu. Bunu yaparken benim yıldığım zamanlarda bile motive etti, kendisine çok teşekkür ederim 🌸🙏🏻",
+    star: (
+      <ReactStars
+        count={5}
+        value={5}
+        size={24}
+        edit={false}
+        color2={"#ffd700"}
+      />
+    ),
   },
   {
     id: 2,
@@ -289,6 +300,15 @@ const stories = [
       lang === "en"
         ? "Abdullah Aşık, who can be safely recommended to anyone looking for a healthy and effective sports experience in Adana, has expertly answered all my questions and requests throughout my training period of about a year. With the training programs he prepared based on scientific data, he helped me overcome my weight gain problem, which had become a nightmare for me, quickly and healthily. Abdullah Hoca, a sports trainer whose professional approach and knowledge I continue to benefit from, has not only made sports more enjoyable and productive for me, but also encouraged me to set new goals for myself."
         : "Adana’da sağlıklı ve etkili bir spor deneyimi arayan herkes için güvenle tavsiye edilebilecek bir isim olan Abdullah Aşık, yaklaşık bir yıllık antrenman sürecim boyunca her türlü soru ve talebime uzmanlıkla yanıt vermiştir. Bilimsel verilere dayalı olarak hazırladığı antrenman programları ile benim için kabusa dönüşen kilo alma sorunumu hızlı ve sağlıklı şekilde aşmamı sağlamıştır. Profesyonel yaklaşımı ve bilgi birikiminden faydalanmayı sürdürdüğüm bir spor eğitmeni olan Abdullah hoca, sporu benim için daha keyifli ve verimli hale getirmekle kalmamış, kendime yeni hedefler belirlemem içinde teşvik etmiştir.",
+    star: (
+      <ReactStars
+        count={5}
+        value={5}
+        size={24}
+        edit={false}
+        color2={"#ffd700"}
+      />
+    ),
   },
   {
     id: 3,
@@ -301,6 +321,15 @@ const stories = [
       lang === "en"
         ? "Even though I can't go to the gym very regularly, my teacher's interest, discipline, devoted and respectful approach has always been motivating. Thanks to his knowledge and professionalism in his field, I feel better both physically and mentally. He really does his job properly.🙏🏻"
         : "Her ne kadar spora çok düzenli gidemesem de hocamın ilgisi, disiplini ,özverili ve saygılı yaklaşımı her zaman motive edici oldu. Alanındaki bilgisi ve profesyonelliği sayesinde kendimi hem fiziksel hem mental açıdan daha iyi hissediyorum . Gerçekten işini layığıyla yapan biri.🙏🏻",
+    star: (
+      <ReactStars
+        count={5}
+        value={5}
+        size={24}
+        edit={false}
+        color2={"#ffd700"}
+      />
+    ),
   },
   {
     id: 4,
@@ -313,6 +342,15 @@ const stories = [
       lang === "en"
         ? "Abdullah Hoca was also my preferred teacher in group lessons. Before we started lessons together, I was uncomfortable with my knees. Now, I have no pain and can kneel comfortably. All that aside, his smiling face and energy are enough."
         : "Abdullah hoca gurup derslerinde de tercih ettiğim bir hocaydı.Birlikte derslere başlamadan önce dizlerimden rahatsızdım. şimdi ise ağrım kalmadığı gibi rahatlıkla diz çökebiliyorum.Hepsi bir yana güler yüzüyle verdiği enerji yeter",
+    star: (
+      <ReactStars
+        count={5}
+        value={5}
+        size={24}
+        edit={false}
+        color2={"#ffd700"}
+      />
+    ),
   },
   {
     id: 5,
@@ -325,6 +363,15 @@ const stories = [
       lang === "en"
         ? "Abdullah Aşık is the embodiment of patience and knowledge. He analyzes his student's physical and mental needs with great accuracy and can create programs that are suitable for him, thus providing maximum efficiency. In addition to this, he also improves you by always equipping himself with new information. We have been working together for years and I would like to continue to progress together. He is a well-mannered instructor who is aware that the brain and heart are also muscles and that they are as important as other muscle groups, and who knows when and how to act in human relations."
         : "Abdullah Aşık sabrin ve bilginin vucut bulmus halidir. Öğrencisinin fiziksel ve zihinsel ihtiyaçlarini muhteşem bir dogrulukla analiz ederek ona uygun programlari cikararak maksimum verimlilik sağlayabiliyor. Bunun yani sira kendini her daim yeni bilgilerle donatmasi da sizi geliştiriyor. Yillardir beraber çalışıyoruz ve bundan sonra da beraber ilerlemek isterim. Beynin ve kalbin de bir kas oldugunun ve onlarin da en az diger kas gruplari kadar önemli olduğunun farkinda olan, düzeyli, insan iliskilerinde ne zaman nasil davranmasini bilen bir eğitmen.",
+    star: (
+      <ReactStars
+        count={5}
+        value={5}
+        size={24}
+        edit={false}
+        color2={"#ffd700"}
+      />
+    ),
   },
   {
     id: 6,
@@ -337,6 +384,15 @@ const stories = [
       lang === "en"
         ? "We have finished our lessons now, not only physically but also mentally I feel much better because of your efforts. Thanks to your patient approach, correct guidance and always motivating words, I have made sports an indispensable part of my life. I am so glad that our paths crossed, thank you very much for your efforts and patience 🙏🏻😊"
         : "Derslerimizi bitirdik artık , sadece fiziksel olarak değil, mental anlamda da kendimi çok daha iyi hissetmem de emeğiniz çok . Sabırlı yaklaşımınız , doğru yönlendirmeleriniz ve her zaman motive edici sözleriniz sayesinde sporu hayatımın vazgeçilmez parçası haline getirdim. Sizinle iyi ki yollarımız kesişmiş emeğiniz ve sabrınız için çok teşekkür ederim 🙏🏻😊",
+    star: (
+      <ReactStars
+        count={5}
+        value={5}
+        size={24}
+        edit={false}
+        color2={"#ffd700"}
+      />
+    ),
   },
   {
     id: 7,
@@ -349,6 +405,15 @@ const stories = [
       lang === "en"
         ? "Since I have been working with Abdullah Hoca, I have gained more energy, strength and efficiency in my daily life, and I thank him for his training sessions."
         : "Abdullah hoca ile çalıştığımdan beri gün içerisinde olan enerjim gücüm ve günlük hayattaki verimliliğim artı kendisine antrenmanları için teşekkür ediyorum.",
+    star: (
+      <ReactStars
+        count={5}
+        value={5}
+        size={24}
+        edit={false}
+        color2={"#ffd700"}
+      />
+    ),
   },
 ];
 
@@ -518,6 +583,10 @@ export default function Home() {
   const [openAll, setOpenAll] = useState(false);
   const [openStates, setOpenStates] = useState(faqs.map(() => false));
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const ReactStars = dynamic(() => import("react-stars"), {
+    ssr: false,
+  });
 
   const toggleExpanded = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -884,7 +953,7 @@ export default function Home() {
                 spaceBetween: 20,
               },
               1024: {
-                slidesPerView: 3,
+                slidesPerView: 4,
                 spaceBetween: 20,
               },
             }}
@@ -900,7 +969,7 @@ export default function Home() {
                       : "border bg-[#ececec] text-[#313131]"
                   }`}
                 >
-                  <div className="flex justify-center items-center mb-2">
+                  <div className="flex flex-col justify-center items-center mb-2">
                     <h3
                       className={`text-lg md:text-xl font-semibold ml-3 ${
                         theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
@@ -908,6 +977,7 @@ export default function Home() {
                     >
                       {story.title}
                     </h3>
+                    {story.star}
                   </div>
 
                   <p
@@ -926,7 +996,7 @@ export default function Home() {
                     <div className="text-center mt-2">
                       <button
                         onClick={() => toggleExpanded(index)}
-                        className={`text-sm underline transition hover:text-blue-600 ${
+                        className={`text-sm underline transition cursor-pointer hover:text-red-600 ${
                           theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
                         }`}
                       >
@@ -1110,6 +1180,14 @@ export default function Home() {
                     : "border-b border-[#313131] focus:outline-blue-500"
                 }`}
               />
+              <div>
+                <ReactStars
+                  count={5}
+                  edit={true}
+                  size={24}
+                  color2={"#ffd700"}
+                />
+              </div>
               <textarea
                 className={`w-full p-2 mt-2 ${
                   theme === "dark" ? "text-[#f1f1f1]" : "text-[#313131]"
