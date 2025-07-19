@@ -9,7 +9,6 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  // metadataBase: new URL("https://www.senin-domainin.com"), // domainini buraya yaz
   title: {
     default: "Abdullah Aşık | Profesyonel Antrenör",
     template: "%s - Abdullah Aşık | Profesyonel Antrenör",
@@ -19,30 +18,6 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
-  // icons: "/black-logo.png",
-  // openGraph: {
-  //   title: "Abdullah Aşık | Personal Trainer",
-  //   description:
-  //     "Kişisel antrenman, online koçluk ve beslenme planlamasıyla sağlıklı yaşamın anahtarı.",
-  //   url: "https://www.senin-domainin.com",
-  //   siteName: "Abdullah Aşık",
-  //   images: [
-  //     {
-  //       url: "/black-logo.png",
-  //       width: 1200,
-  //       height: 630,
-  //       alt: "Abdullah Aşık - Personal Trainer",
-  //     },
-  //   ],
-  //   type: "website",
-  // },
-  // twitter: {
-  //   card: "summary_large_image",
-  //   title: "Abdullah Aşık | Personal Trainer",
-  //   description:
-  //     "Profesyonel antrenman ve motivasyon desteği. Formunu şimdi kazan!",
-  //   images: ["/black-logo.png"],
-  // },
 };
 
 export default function RootLayout({
@@ -54,7 +29,6 @@ export default function RootLayout({
     <html lang="tr" suppressHydrationWarning>
       <head>
         <link rel="preload" as="image" href="/favicon.ico" />
-        <link rel="preload" as="image" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${inter.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
