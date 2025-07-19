@@ -603,11 +603,11 @@ export default function Home() {
 
   const currentTranslations = translations[language];
 
-  const instaLinks = [
-    "https://www.instagram.com/p/DF5pExqokZ4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    "https://www.instagram.com/p/C4bCXwDIYfW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    "https://www.instagram.com/p/DARZR1kIj_B/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-  ];
+  // const instaLinks = [
+  //   "https://www.instagram.com/p/DF5pExqokZ4/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  //   "https://www.instagram.com/p/C4bCXwDIYfW/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  //   "https://www.instagram.com/p/DARZR1kIj_B/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  // ];
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -745,6 +745,7 @@ export default function Home() {
             width={72}
             height={72}
             className="hoverZoomLink"
+            poster="/video-thumbnail.jpg"
           >
             <source
               src="https://res.cloudinary.com/weetan/video/upload/v1737170594/Personal%20Site/arrow-animated_cbukwc.webm"
@@ -955,7 +956,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
+      {/* <section
         id="instaPost"
         className={`px-10 py-20 ${
           theme === "dark"
@@ -989,7 +990,7 @@ export default function Home() {
             />
           ))}
         </div>
-      </section>
+      </section> */}
 
       <section
         id="faq"
