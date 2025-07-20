@@ -21,6 +21,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import animationData from "../../public/lottie/arrow.json";
+import Lottie from "lottie-react";
 
 type LanguageKey = "en" | "tr";
 
@@ -726,8 +728,8 @@ export default function Home() {
       <div
         className={`w-full h-auto flex flex-col items-center justify-center border-none ${
           theme === "dark"
-            ? "bg-[#1a1a1a] duration-200 transform transition-all border-none"
-            : "bg-[#f0f0f0] duration-200 transform transition-all border-none"
+            ? "bg-[#1a1a1a] duration-200 transform transition-all"
+            : "bg-[#f0f0f0] duration-200 transform transition-all"
         }`}
       >
         <span
@@ -737,21 +739,20 @@ export default function Home() {
         >
           {currentTranslations.scrollingText(language)}
         </span>
-        <span className="cursor-pointer" onClick={() => scrollToSection()}>
-          <video
-            autoPlay
-            loop
-            muted
-            width={72}
-            height={72}
-            className="hoverZoomLink"
-            poster="/video-thumbnail.jpg"
+
+        <span
+          className={`cursor-pointer bg-transparent`}
+          onClick={() => scrollToSection()}
+        >
+          <div
+            className={`w-[72px] h-[72px] filter ${
+              theme === "dark"
+                ? "invert brightness-75"
+                : "invert-0 brightness-100"
+            }`}
           >
-            <source
-              src="https://res.cloudinary.com/weetan/video/upload/v1737170594/Personal%20Site/arrow-animated_cbukwc.webm"
-              type="video/webm"
-            />
-          </video>
+            <Lottie animationData={animationData} loop={true} />
+          </div>
         </span>
       </div>
 
