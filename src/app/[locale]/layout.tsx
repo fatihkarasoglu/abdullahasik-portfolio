@@ -1,10 +1,16 @@
-// src/app/[locale]/layout.tsx
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/app/i18n/config";
 import { StructuredData } from "@/app/components/seo/StructuredData";
 
-const baseUrl = "https://www.abdullahasik.com";
+const getBaseUrl = () => {
+  if (process.env.VERCEL_ENV === "production")
+    return "https://www.abdullahasik.com";
+
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+
+  return "http://localhost:3000";
+};
 
 const metaByLocale: Record<Locale, { title: string; description: string }> = {
   tr: {
@@ -28,7 +34,10 @@ export async function generateMetadata({
   if (!isLocale(raw)) notFound();
   const locale = raw as Locale;
 
+  const baseUrl = getBaseUrl();
   const meta = metaByLocale[locale];
+
+  const ogImageUrl = `${baseUrl}/${locale}/opengraph-image`;
 
   return {
     title: meta.title,
@@ -51,18 +60,19 @@ export async function generateMetadata({
       locale: locale === "tr" ? "tr_TR" : "en_US",
       images: [
         {
-          url: `${baseUrl}/og-image.png`,
-          width: 884,
-          height: 1350,
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
           alt: "Abdullah Aşık",
         },
       ],
     },
+
     twitter: {
       card: "summary_large_image",
       title: meta.title,
       description: meta.description,
-      images: [`${baseUrl}/og-image.png`],
+      images: [ogImageUrl],
     },
   };
 }

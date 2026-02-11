@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/app/i18n/config";
 import type { LocaleDict } from "../i18n/types";
-
 import { Navbar } from "../components/sections/Navbar";
 import { Hero } from "../components/sections/Hero";
 import { Plans } from "../components/sections/Plans";
