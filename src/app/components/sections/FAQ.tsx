@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import type { Locale } from "@/app/i18n/config";
 import type { LocaleDict } from "@/app/i18n/types";
 import { Container } from "../ui/Container";
 import { Card } from "../ui/Card";
 
-export function FAQ({ locale, dict }: { locale: Locale; dict: LocaleDict }) {
+export function FAQ({ dict }: { dict: LocaleDict }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (

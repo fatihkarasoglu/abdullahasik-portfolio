@@ -1,12 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import type { Locale } from "@/app/i18n/config";
 import type { LocaleDict } from "@/app/i18n/types";
 import { Container } from "../ui/Container";
 import { Card } from "../ui/Card";
 
-export function About({ locale, dict }: { locale: Locale; dict: LocaleDict }) {
+export function About({ dict }: { dict: LocaleDict }) {
   return (
     <section
       id="about"

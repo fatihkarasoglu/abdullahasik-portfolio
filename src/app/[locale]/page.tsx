@@ -32,12 +32,12 @@ export default async function Page({
     <main>
       <FaqStructuredData dict={dict} />
       <Navbar locale={locale} dict={dict} />
-      <Hero locale={locale} dict={dict} />
+      <Hero dict={dict} />
       <Plans locale={locale} dict={dict} />
-      <About locale={locale} dict={dict} />
+      <About dict={dict} />
       <Stories locale={locale} dict={dict} />
       <Contact locale={locale} dict={dict} />
-      <FAQ locale={locale} dict={dict} />
+      <FAQ dict={dict} />
       <Footer locale={locale} dict={dict} />
     </main>
   );

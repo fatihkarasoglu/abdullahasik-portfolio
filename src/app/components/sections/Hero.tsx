@@ -3,10 +3,9 @@
 import Image from "next/image";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
-import { Locale } from "@/app/i18n/config";
 import type { LocaleDict } from "@/app/i18n/types";
 
-export function Hero({ locale, dict }: { locale: Locale; dict: LocaleDict }) {
+export function Hero({ dict }: { dict: LocaleDict }) {
   return (
     <section className="relative overflow-hidden bg-[rgb(var(--background))]">
       <div
