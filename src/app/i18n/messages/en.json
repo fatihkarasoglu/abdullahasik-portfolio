@@ -1,0 +1,128 @@
+{
+  "nav": {
+    "about": "About",
+    "services": "Plans",
+    "stories": "Stories",
+    "contact": "Contact",
+    "cta": "Get Started",
+    "lang": "TR"
+  },
+  "hero": {
+    "role": "Professional Personal Trainer",
+    "name": "Abdullah Aşık",
+    "headlineA": "Let’s reach",
+    "headlineB": "your goal body.",
+    "sub": "A plan built for you, clear tracking, sustainable results. Start today.",
+    "primary": "Start Now",
+    "secondary": "View Plans"
+  },
+  "plans": {
+    "title": "Choose Your Plan",
+    "subtitle": "Flexible options built around your schedule and commitment.",
+    "popular": "MOST POPULAR",
+    "select": "Select Plan"
+  },
+  "stories": {
+    "title": "Member Reviews",
+    "subtitle": "Real people, real results. See how my clients are transforming.",
+    "more": "View all",
+    "less": "Show less",
+    "readMore": "Read more",
+    "readLess": "Show less"
+  },
+  "contact": {
+    "kicker": "GET IN TOUCH",
+    "titleA": "Ready to work?",
+    "titleB": "Let’s talk.",
+    "subtitle": "Have questions? Let’s map the best path for you.",
+
+    "info": {
+      "emailLabel": "Email",
+      "phoneLabel": "Phone",
+      "whatsappLabel": "WhatsApp",
+      "whatsappCta": "Message on WhatsApp"
+    },
+
+    "form": {
+      "title": "Send a Message",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email address",
+      "goal": "Primary goal",
+      "message": "Message",
+      "send": "Send message"
+    }
+  },
+  "about": {
+    "kicker": "ABOUT ME",
+    "titleA": "Discipline + Science",
+    "titleB": "Sustainable outcome.",
+    "subtitle": "Whatever your goal, we're moving forward with the right program, the right follow-up, and the right habits.",
+    "body": "I began my university education in Sports Management in 2018. Since 2019, I have been working as a personal coach in the sports sector. Throughout my studies and afterwards, I have actively participated in the field, allowing me to combine my theoretical knowledge with practical experience. Throughout my career, I have placed great importance on self-improvement as a fitness professional. I strive to keep my knowledge up-to-date by taking various trainings from international organizations such as NASM (National Academy of Sports Medicine) and EREPS (European Register of Exercise Professionals). I closely follow developments in sports science and continue to learn in order to offer my clients the most accurate and effective methods. Since 2021, I have been working within MAC (Mars Athletic), contributing to the physical development of individuals with training programs tailored to their goals, needs, and lifestyles. I also provide one-on-one guidance to help them maintain their motivation and manage the process with enjoyment. For me, sport is not just about physical transformation; it is also the foundation of mental strengthening. Therefore, my aim is to cultivate physically and mentally strong individuals and create a sustainable difference in the sector.",
+    "techniquesTitle": "My Training Techniques",
+    "techniques": [
+      "Weight Management (Weight Gain – Weight Loss)",
+      "Strength Training",
+      "Posture Analysis and Exercise Planning",
+      "Cardiovascular Training Planning"
+    ],
+    "educationTitle": "My Specialized Trainings",
+    "education": [
+      {
+        "label": "EREPS (European Registry of Exercise Professionals)",
+        "value": "EQF Level 4"
+      },
+      { "label": "NASM (National Academy of Sports Medicine)", "value": "CPT" },
+      { "label": "MAC Academy", "value": "Education" }
+    ]
+  },
+  "faq": {
+    "titleA": "Frequently Asked",
+    "titleB": "Questions",
+    "subtitle": "Most common questions are answered here.",
+    "ctaText": "Do you still have questions?",
+    "ctaLink": "Let’s talk.",
+    "items": [
+      {
+        "q": "What kind of results will I get from this service?",
+        "a": "Whatever your goal—whether to gain weight, lose weight, or get in shape and firm—we guide you professionally with a roadmap tailored specifically to you. By finding common ground between your expectations and what this sport can offer you, we make the process both efficient and sustainable. This allows you to achieve clear and satisfying results."
+      },
+      {
+        "q": "Is my training program tailored specifically to me?",
+        "a": "Yes, the program is completely tailored to you. Our priority is your goals; we consider many factors such as your age, gender, body type, current physical activity level, lifestyle, and any health problems to create the most suitable plan for you. This ensures the process is both safe and effective."
+      },
+      {
+        "q": "I've never done any sports before, is this system suitable for me?",
+        "a": "Absolutely appropriate, and often even more necessary. For individuals who have never exercised before, professional guidance is crucial for a healthy exercise adaptation process, minimizing the risk of injury, and properly building fundamental strength development. This system allows you to access information directly and progress towards your goals in a controlled but effective manner. This makes the process both safer and faster."
+      },
+      {
+        "q": "Can I actually make progress in distance learning?",
+        "a": "Of course, but it all depends on the individual's commitment to the process. While distance learning might seem different from working with a personal trainer one-on-one, having a personalized program and readily available trainer support makes the process much more effective. Getting immediate answers to your questions allows for faster and healthier progress than working alone and without direction."
+      },
+      {
+        "q": "How often will I need to train?",
+        "a": "Training frequency is determined by your goals, current physical condition, daily lifestyle, and exercise history. Therefore, for the most effective results, it's best to plan this with your trainer. This way, a sustainable and personalized training routine can be established."
+      },
+      {
+        "q": "Do the programs include nutritional advice?",
+        "a": "Detailed and personalized nutrition programs fall under the expertise of licensed dietitians. As a trainer, my role is to guide you on healthy eating, monitor your dietary habits, and offer practical advice when needed. However, detailed diet plans can only be prepared by licensed dietitians; there are limitations to their authority and knowledge in this area."
+      },
+      {
+        "q": "What happens if I lose my motivation?",
+        "a": "Motivation is certainly important, but discipline and sustainability are far more critical factors. Our priority will always be to establish a disciplined habit and ensure its sustainability. Motivation can fluctuate; what matters is being able to progress steadily towards the goal through discipline. This approach yields lasting and meaningful results."
+      },
+      {
+        "q": "Does this system only bring about physical change?",
+        "a": "The most fundamental benefit of exercise is physical transformation: muscle development, fat loss, and body shaping. However, regular and correctly performed exercises slow down the aging process, prevent joint and musculoskeletal disorders, support your health, increase your energy, boost your self-confidence, and positively affect your mood. In short, this system offers a holistic transformation in terms of both physical and long-term health."
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "The path to your goal starts with the right plan.",
+    "quickLinks": "Quick links",
+    "socials": "Social",
+    "legal": "Legal",
+    "copyright": "© 2026 Abdullah Aşık",
+    "privacy": "Privacy Policy"
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "nav": {
+    "about": "Hakkımda",
+    "services": "Paketler",
+    "stories": "Yorumlar",
+    "contact": "İletişim",
+    "cta": "Başlayalım",
+    "lang": "EN"
+  },
+  "hero": {
+    "role": "Profesyonel Kişisel Antrenör",
+    "name": "Abdullah Aşık",
+    "headlineA": "Hedefindeki vücuda",
+    "headlineB": "birlikte ulaşalım.",
+    "sub": "Sana özel program, net takip, sürdürülebilir sonuç. Bugün başla.",
+    "primary": "Hemen Başla",
+    "secondary": "Paketleri Gör"
+  },
+  "plans": {
+    "title": "Planını Seç",
+    "subtitle": "Hedeflerine ve yaşam tempona uygun, net ve sürdürülebilir seçenekler.",
+    "popular": "EN POPÜLER",
+    "select": "Planı Seç"
+  },
+  "stories": {
+    "title": "Üye Yorumları",
+    "subtitle": "Gerçek insanlar, gerçek sonuçlar. Danışanlarımın dönüşüm yolculuklarını keşfet.",
+    "more": "Tümünü gör",
+    "less": "Daha az göster",
+    "readMore": "Devamını oku",
+    "readLess": "Daha az"
+  },
+  "contact": {
+    "kicker": "İLETİŞİM",
+    "titleA": "Hazır mısın?",
+    "titleB": "Konuşalım.",
+    "subtitle": "Soruların mı var? Hedefini birlikte netleştirelim.",
+
+    "info": {
+      "emailLabel": "E-posta",
+      "phoneLabel": "Telefon",
+      "whatsappLabel": "WhatsApp",
+      "whatsappCta": "WhatsApp’tan yaz"
+    },
+
+    "form": {
+      "title": "Mesaj Gönder",
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "email": "E-posta",
+      "goal": "Birincil Hedef",
+      "message": "Mesaj",
+      "send": "Gönder"
+    }
+  },
+  "about": {
+    "kicker": "HAKKIMDA",
+    "titleA": "Disiplin + Bilim",
+    "titleB": "Sürdürülebilir sonuç.",
+    "subtitle": "Hedefin ne olursa olsun; doğru program, doğru takip ve doğru alışkanlıklarla ilerliyoruz.",
+    "body": "2018 yılında Spor Yöneticiliği alanında üniversite eğitimime başladım. 2019 yılından itibaren ise spor sektöründe personal coach olarak çalışmaya başladım. Hem eğitim hayatım boyunca hem de sonrasında sahada aktif olarak yer alarak teorik bilgimi pratikle birleştirme fırsatı buldum. Kariyerim boyunca fitness profesyoneli olarak kendimi geliştirmeye büyük önem verdim. NASM (National Academy of Sports Medicine) ve EREPS (European Register of Exercise Professionals) gibi uluslararası kuruluşlardan çeşitli eğitimler alarak bilgi birikimimi güncel tutmaya çalışıyorum.\n\nSpor bilimindeki gelişmeleri yakından takip ederek danışanlarıma en doğru ve etkili yöntemleri sunmak için öğrenmeye devam ediyorum. 2021 yılından bu yana MAC (Mars Athletic) bünyesinde hizmet veriyor; bireylerin hedeflerine, ihtiyaçlarına ve yaşam tarzlarına özel olarak hazırladığım antrenman programlarıyla onların fiziksel gelişimlerine katkı sağlıyorum. Aynı zamanda motivasyonlarını sürdürebilmeleri ve süreci keyifle yönetebilmeleri için birebir rehberlik yapıyorum. Benim için spor, sadece fiziksel dönüşüm değil; aynı zamanda mental olarak güçlenmenin de temelidir. Bu yüzden amacım, hem bedensel hem de zihinsel olarak güçlü bireyler yetiştirmek ve sektörde sürdürülebilir bir fark yaratmak.",
+    "techniquesTitle": "Antrenman Tekniklerim",
+    "techniques": [
+      "Kilo Kontrolü (Kilo Alma – Kilo Verme)",
+      "Kuvvet Antrenmanı",
+      "Postür Analizi ve Egzersiz Planlaması",
+      "Kardiyovasküler Antrenman Planlaması"
+    ],
+    "educationTitle": "Uzmanlık Eğitimlerim",
+    "education": [
+      {
+        "label": "EREPS (Avrupa Egzersiz Profesyonelleri Sicili)",
+        "value": "EQF Seviye 4"
+      },
+      { "label": "NASM (Ulusal Spor Hekimliği Akademisi)", "value": "CPT" },
+      { "label": "MAC Akademi", "value": "Eğitim" }
+    ]
+  },
+  "faq": {
+    "titleA": "Sıkça Sorulan",
+    "titleB": "Sorular",
+    "subtitle": "Aklına takılan soruların çoğunu burada yanıtladım.",
+    "ctaText": "Hâlâ soruların mı var?",
+    "ctaLink": "İletişime geçelim.",
+    "items": [
+      {
+        "q": "Bu hizmetten nasıl bir sonuç alırım?",
+        "a": "Hedefin ne olursa olsun — ister kilo almak, ister kilo vermek, ister şekillenip sıkılaşmak — sana özel olarak belirlediğimiz yol haritasıyla profesyonel bir şekilde ilerliyoruz. Senin beklentilerin ve bu sporun sana kazandırabilecekleriyle ortak noktada buluşarak, süreci hem verimli hem de sürdürülebilir hale getiriyoruz. Bu sayede net ve tatmin edici sonuçlara ulaşman mümkün oluyor."
+      },
+      {
+        "q": "Antrenman programı bana özel mi hazırlanıyor?",
+        "a": "Evet, program tamamen sana özel hazırlanıyor. Önceliğimiz senin hedeflerin olmak üzere; yaşın, cinsiyetin, vücut tipin, mevcut fiziksel aktivite durumun, yaşam tarzın ve varsa sağlık problemlerin gibi birçok faktörü göz önünde bulundurarak sana en uygun planı oluşturuyorum. Böylece sürecin hem güvenli hem de etkili geçmesini sağlıyoruz."
+      },
+      {
+        "q": "Daha önce hiç spor yapmadım, bu sistem bana uygun mu?",
+        "a": "Kesinlikle uygun, hatta çoğu zaman daha da gerekli. Daha önce spor yapmamış bireylerin, egzersiz adaptasyon sürecini sağlıklı geçirebilmesi, sakatlanma riskini en aza indirebilmesi ve temel kuvvet gelişimini doğru şekilde inşa edebilmesi için profesyonel rehberlik büyük önem taşır. Bu sistem, bilgiye doğrudan ulaşmanı ve hedeflerine kontrollü ama etkili bir şekilde ilerlemeni sağlar. Bu da süreci hem daha güvenli hem de daha hızlı hale getirir."
+      },
+      {
+        "q": "Uzaktan eğitimde gerçekten ilerleme kaydedebilir miyim?",
+        "a": "Elbette, ancak bu tamamen kişinin sürece olan bağlılığıyla ilgilidir. Uzaktan eğitim, birebir personal trainer eşliğinde çalışmakla aynı değilmiş gibi görünse de, sana özel hazırlanmış bir programın olması ve her zaman ulaşabileceğin bir eğitmen desteğiyle süreç çok daha etkili hale gelir. Sorularına anında cevap alabilmen, yönsüz ve tek başına çalışmaktan çok daha hızlı ve sağlıklı ilerlemeni sağlar."
+      },
+      {
+        "q": "Kaç günde bir antrenman yapmam gerekecek?",
+        "a": "Antrenman sıklığı; hedeflerine, mevcut fiziksel durumuna, günlük yaşam tempona ve egzersiz geçmişine göre belirlenir. Bu nedenle, en verimli sonuç için bu kararı eğitmeninle birlikte planlamak en doğrusudur. Böylece sürdürülebilir ve sana uygun bir antrenman rutini oluşturulabilir."
+      },
+      {
+        "q": "Programların içinde beslenme önerileri de var mı?",
+        "a": "Detaylı ve kişiye özel beslenme programları, işinin uzmanı olan diyetisyenlerin alanına girer. Bir antrenör olarak benim görevim, sana sağlıklı beslenme konusunda doğru yönlendirmeler yapmak, beslenme alışkanlıklarını takip etmek ve gerektiğinde pratik tavsiyeler sunmaktır. Ancak detaylı diyet planları yalnızca lisanslı diyetisyenler tarafından hazırlanabilir; bu konuda yetki ve bilgi sınırları bulunur."
+      },
+      {
+        "q": "Motivasyonumu kaybedersem ne olur?",
+        "a": "Motivasyon elbette önemli, ancak disiplin ve sürdürülebilirlik çok daha kritik faktörlerdir. Bizim önceliğimiz her zaman disiplinli bir alışkanlık oluşturmak ve sürdürülebilirliği sağlamak olacaktır. Motivasyon iniş çıkış yaşayabilir; önemli olan, disiplin sayesinde hedefe istikrarlı bir şekilde ilerleyebilmektir. Bu yaklaşım, kalıcı ve anlamlı sonuçlar getirir."
+      },
+      {
+        "q": "Bu sistem sadece fiziksel değişim mi sağlar?",
+        "a": "Sporun en temel faydası fiziksel değişimdir; kas gelişimi, yağ kaybı ve vücut şekillendirme. Ancak düzenli ve doğru yapılan egzersizler, yaşlanma sürecini yavaşlatır, eklem ve kas-iskelet sistemi rahatsızlıklarının önüne geçer. Ayrıca sağlığınızı destekler, enerjinizi artırır, özgüveninizi yükseltir ve ruh halinizi olumlu etkiler. Yani bu sistem, hem fiziksel hem de uzun vadeli sağlık açısından bütünsel bir dönüşüm sunar."
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Hedefine giden yol, doğru planla başlar.",
+    "quickLinks": "Hızlı Erişim",
+    "socials": "Sosyal",
+    "legal": "Yasal",
+    "copyright": "© 2026 Abdullah Aşık",
+    "privacy": "Gizlilik Politikası"
+  }
+}
