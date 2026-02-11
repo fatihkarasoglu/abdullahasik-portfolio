@@ -10,7 +10,8 @@ const nextConfig = {
   },
 
   async headers() {
-    const isProd = process.env.NODE_ENV === "production";
+    const isProd = process.env.VERCEL_ENV === "production";
+
     return [
       {
         source: "/(.*)",
@@ -19,14 +20,17 @@ const nextConfig = {
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "X-DNS-Prefetch-Control", value: "on" },
+
           ...(isProd
             ? [
+                { key: "X-Robots-Tag", value: "index, follow" },
                 {
                   key: "Strict-Transport-Security",
                   value: "max-age=31536000; includeSubDomains; preload",
                 },
               ]
             : []),
+
           {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
