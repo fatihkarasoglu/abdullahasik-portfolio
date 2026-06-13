@@ -20,6 +20,11 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: LocaleDict }) {
 
   const [open, setOpen] = useState(false);
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const otherLocale = useMemo(() => (locale === "tr" ? "en" : "tr"), [locale]);
 
   useEffect(() => {
@@ -56,7 +61,7 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: LocaleDict }) {
             <div className="relative h-10 w-10 overflow-hidden rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--card))]">
               <Image
                 src={
-                  currentTheme === "dark"
+                  mounted && currentTheme === "dark"
                     ? "/white-logo.png"
                     : "/black-logo.png"
                 }
@@ -118,7 +123,7 @@ export function Navbar({ locale, dict }: { locale: Locale; dict: LocaleDict }) {
               aria-label="Toggle theme"
               className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[rgb(var(--border))] hover:bg-[rgb(var(--muted))] cursor-pointer"
             >
-              {currentTheme === "dark" ? (
+              {mounted && currentTheme === "dark" ? (
                 <FaSun size={18} />
               ) : (
                 <FaMoon size={18} />

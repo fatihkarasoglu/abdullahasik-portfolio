@@ -15,7 +15,7 @@ function isPublicFile(pathname: string) {
   );
 }
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   if (isPublicFile(pathname)) {
@@ -35,7 +35,7 @@ export function middleware(req: NextRequest) {
   const url = req.nextUrl.clone();
   url.pathname = `/${DEFAULT_LOCALE}${pathname}`;
 
-  const res = NextResponse.redirect(url);
+  const res = NextResponse.redirect(url, 308);
   res.headers.set("x-locale", DEFAULT_LOCALE);
   return res;
 }
