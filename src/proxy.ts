@@ -22,21 +22,23 @@ export function proxy(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const locale = LOCALES.find(
+  const hasLocale = LOCALES.find(
     (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`),
   );
 
-  if (locale) {
+  if (hasLocale) {
     const res = NextResponse.next();
-    res.headers.set("x-locale", locale);
+    res.headers.set("x-locale", hasLocale);
     return res;
   }
 
   const url = req.nextUrl.clone();
-  url.pathname = `/${DEFAULT_LOCALE}${pathname}`;
+  url.pathname =
+    pathname === "/" ? `/${DEFAULT_LOCALE}` : `/${DEFAULT_LOCALE}${pathname}`;
 
-  const res = NextResponse.redirect(url, 308);
+  const res = NextResponse.redirect(url, 307);
   res.headers.set("x-locale", DEFAULT_LOCALE);
+
   return res;
 }
 
