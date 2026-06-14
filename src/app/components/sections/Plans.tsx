@@ -26,9 +26,14 @@ export function Plans({ locale, dict }: { locale: Locale; dict: LocaleDict }) {
             const isPopular = Boolean(p.popular);
             return (
               <Card
+                onClick={() =>
+                  document
+                    .getElementById("contact")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
                 key={p.id}
                 className={[
-                  "relative p-6 transition",
+                  "relative p-6 transition cursor-pointer",
                   isPopular
                     ? "border-[rgb(var(--primary))] shadow-lg"
                     : "hover:-translate-y-0.5 hover:shadow-md",
@@ -83,7 +88,7 @@ export function Plans({ locale, dict }: { locale: Locale; dict: LocaleDict }) {
                   )}
 
                   <Button
-                    className="mt-6 w-full"
+                    className="mt-6 w-full cursor-pointer"
                     variant={isPopular ? "primary" : "secondary"}
                     onClick={() =>
                       document

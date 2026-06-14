@@ -1,4 +1,3 @@
-import Script from "next/script";
 import type { LocaleDict } from "@/app/i18n/types";
 
 type Props = {
@@ -22,10 +21,9 @@ export function FaqStructuredData({ dict }: Props) {
   };
 
   return (
-    <Script
+    <script
       id="structured-data-faq"
       type="application/ld+json"
-      strategy="beforeInteractive"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />
   );

@@ -26,7 +26,7 @@ export const plans: Plan[] = [
       tr: "Birebir Özel veya Online Ders",
       en: "1-on-1 Private or Online Lesson",
     },
-    price: "₺1.200+",
+    price: "₺1.500+",
     period: { tr: "ders", en: "lesson" },
     desc: {
       tr: "Kendi klübümde ya da online görüşerek; kişiye özel program, ölçüm ve değerlendirme, teknik destek ve motivasyon.",
@@ -48,8 +48,8 @@ export const plans: Plan[] = [
     },
     popular: true,
     footnote: {
-      tr: "(1 Ders 1.200 ₺) • (12 Ders 11.400 ₺) • (24 Ders 22.200 ₺) • (36 Ders 32.400 ₺)",
-      en: "(1 lesson ₺1,200) • (12 ₺11,400) • (24 ₺22,200) • (36 ₺32,400)",
+      tr: "(1 Ders 1.500 ₺) • (8 Ders 10.400₺) • (12 Ders 14.400 ₺) • (24 Ders 28.800 ₺)",
+      en: "(1 lesson ₺1,500) • (8 lesson ₺10.400) • (12 ₺14.400) • (24 ₺28,800)",
     },
   },
   {
@@ -170,6 +170,16 @@ export const stories = [
     quote: {
       tr: "Abdullah hoca ile çalıştığımdan beri gün içerisinde olan enerjim gücüm ve günlük hayattaki verimliliğim artı kendisine antrenmanları için teşekkür ediyorum.",
       en: "Since I started working with Coach Abdullah, my energy, strength, and daily productivity have increased. I thank him for the training sessions.",
+    },
+    tagline: { tr: "Danışan", en: "Client" },
+  },
+  {
+    id: 8,
+    name: "Fatih K.",
+    stars: 5,
+    quote: {
+      tr: "İlk günden beri içimde açıklayamadığım bir güven hissi vardı. Zaman geçtikçe bunun ne kadar doğru bir his olduğunu gördüm. İyi bir antrenör olmanın ötesinde, yoluma eşlik eden değerli bir dost olduğun için teşekkür ederim.",
+      en: "From day one, I had an inexplicable feeling of trust within me. As time went on, I saw how true that feeling was. Thank you for being more than just a good coach; thank you for being a valuable friend who accompanied me on my journey.",
     },
     tagline: { tr: "Danışan", en: "Client" },
   },

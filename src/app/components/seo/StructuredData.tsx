@@ -1,4 +1,3 @@
-import Script from "next/script";
 import type { Locale } from "@/app/i18n/config";
 
 type Props = { locale: Locale };
@@ -59,16 +58,14 @@ export function StructuredData({ locale }: Props) {
 
   return (
     <>
-      <Script
+      <script
         id="structured-data-location"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(location) }}
       />
-      <Script
+      <script
         id="structured-data-person"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}
       />
     </>

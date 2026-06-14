@@ -1,8 +1,8 @@
-import Script from "next/script";
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Inter, Manrope, Space_Grotesk, DM_Sans } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -58,28 +58,10 @@ export default function RootLayout({
     antialiased
   `}
       >
-        {GA_ID ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga-init" strategy="afterInteractive">
-              {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '${GA_ID}', {
-          anonymize_ip: true,
-          page_path: window.location.pathname,
-        });
-      `}
-            </Script>
-          </>
-        ) : null}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
+        {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
       </body>
     </html>
   );

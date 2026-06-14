@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import type { Locale } from "@/app/i18n/config";
 import type { LocaleDict } from "@/app/i18n/types";
 import { Container } from "../ui/Container";
@@ -16,6 +17,11 @@ export function Footer({ locale, dict }: { locale: Locale; dict: LocaleDict }) {
   const { theme, resolvedTheme } = useTheme();
   const currentTheme = theme === "system" ? resolvedTheme : theme;
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <footer className="border-t border-[rgb(var(--border))] bg-[rgb(var(--background))]">
       <Container className="py-14">
@@ -29,7 +35,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: LocaleDict }) {
               <div className="relative h-24 w-24 overflow-hidden rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--card))]">
                 <Image
                   src={
-                    currentTheme === "dark"
+                    mounted && currentTheme === "dark"
                       ? "/white-logo.png"
                       : "/black-logo.png"
                   }
