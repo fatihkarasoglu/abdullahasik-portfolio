@@ -28,15 +28,32 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.abdullahasik.com"),
   title: {
-    default: "Abdullah Aşık | Professional Personal Trainer",
+    default: "Abdullah Aşık | Adana Personal Trainer & Online Fitness Koçu",
     template: "%s | Abdullah Aşık",
   },
   description:
-    "Online and in-person personal training. Sustainable results with a plan built for you.",
-  metadataBase: new URL("https://www.abdullahasik.com"),
+    "Adana MACFit'te yüz yüze personal training veya dünyanın her yerine profesyonel online fitness koçluğu. Sürdürülebilir sonuçlar için hemen başla.",
   verification: {
     google: "6cX3ARsZBfKRZL4gjX3gjLYK4CaQXkjAKR02euUO58s",
+  },
+  alternates: {
+    canonical: "/",
+    languages: {
+      tr: "/tr",
+      en: "/en",
+    },
+  },
+  openGraph: {
+    title: "Abdullah Aşık | Profesyonel Fitness Koçu",
+    description:
+      "Hedeflerine bilimle ulaş. Sana özel antrenman ve beslenme stratejileri.",
+    url: "https://www.abdullahasik.com",
+    siteName: "Abdullah Aşık Fitness",
+    locale: "tr_TR",
+    alternateLocale: ["en_US"],
+    type: "website",
   },
 };
 

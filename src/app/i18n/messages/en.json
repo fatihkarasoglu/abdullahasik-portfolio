@@ -1,4 +1,8 @@
 {
+  "main": {
+    "title": "Abdullah Aşık | Adana Personal Trainer & Online Coaching",
+    "description": "The path to your goal begins with the right plan. A personalized program, clear tracking, and sustainable results. Start today."
+  },
   "nav": {
     "about": "About",
     "services": "Plans",
@@ -8,12 +12,12 @@
     "lang": "TR"
   },
   "hero": {
-    "role": "Professional Personal Trainer",
+    "role": "Adana Personal Trainer & Online Fitness Coach",
     "name": "Abdullah Aşık",
-    "headlineA": "Let’s reach",
-    "headlineB": "your goal body.",
-    "sub": "A plan built for you, clear tracking, sustainable results. Start today.",
-    "primary": "Start Now",
+    "headlineA": "Break your physical limits,",
+    "headlineB": "achieve your goals with science.",
+    "sub": "Achieve lasting results with face-to-face personal training at Adana MACFit, or professional online coaching no matter where you are in the world.",
+    "primary": "Start Today",
     "secondary": "View Plans"
   },
   "plans": {
@@ -55,25 +59,25 @@
   },
   "about": {
     "kicker": "ABOUT ME",
-    "titleA": "Discipline + Science",
-    "titleB": "Sustainable outcome.",
-    "subtitle": "Whatever your goal, we're moving forward with the right program, the right follow-up, and the right habits.",
-    "body": "I began my university education in Sports Management in 2018. Since 2019, I have been working as a personal coach in the sports sector. Throughout my studies and afterwards, I have actively participated in the field, allowing me to combine my theoretical knowledge with practical experience. Throughout my career, I have placed great importance on self-improvement as a fitness professional. I strive to keep my knowledge up-to-date by taking various trainings from international organizations such as NASM (National Academy of Sports Medicine) and EREPS (European Register of Exercise Professionals). I closely follow developments in sports science and continue to learn in order to offer my clients the most accurate and effective methods. Since 2021, I have been working within MAC (Mars Athletic), contributing to the physical development of individuals with training programs tailored to their goals, needs, and lifestyles. I also provide one-on-one guidance to help them maintain their motivation and manage the process with enjoyment. For me, sport is not just about physical transformation; it is also the foundation of mental strengthening. Therefore, my aim is to cultivate physically and mentally strong individuals and create a sustainable difference in the sector.",
+    "titleA": "Scientific Approach + Discipline",
+    "titleB": "Sustainable Results.",
+    "subtitle": "No matter your goal, I am by your side as a professional fitness coach. We walk towards your target together with the right program, precise tracking, and solid habits.",
+    "body": "My academic journey in Sports Management began in 2018, and by 2019, I put this knowledge into practice on the field as a professional personal trainer. Throughout my career, I have embraced not just temporary physical changes, but permanent, science-based training systems. With this vision, I completed my certifications from internationally recognized authorities such as NASM (National Academy of Sports Medicine) and EREPS (European Register of Exercise Professionals).\n\nSince 2021, I have been providing face-to-face personal training at Adana MACFit (Mars Athletic); simultaneously, I offer online fitness coaching to clients across Turkey and around the globe through my custom tracking system. With personalized programs tailored to individual anatomy, posture, and lifestyle, I guide my clients to reach their strongest versions—not just physically, but mentally as well. My goal is to create a sustainable difference in the industry, free from cookie-cutter methods.",
     "techniquesTitle": "My Training Techniques",
     "techniques": [
-      "Weight Management (Weight Gain – Weight Loss)",
-      "Strength Training",
-      "Posture Analysis and Exercise Planning",
+      "Weight Management (Weight Loss & Gain)",
+      "Strength and Hypertrophy Training",
+      "Posture Analysis and Corrective Exercise Planning",
       "Cardiovascular Training Planning"
     ],
-    "educationTitle": "My Specialized Trainings",
+    "educationTitle": "Specialized Certifications",
     "education": [
       {
-        "label": "EREPS (European Registry of Exercise Professionals)",
+        "label": "EREPS (European Register of Exercise Professionals)",
         "value": "EQF Level 4"
       },
       { "label": "NASM (National Academy of Sports Medicine)", "value": "CPT" },
-      { "label": "MAC Academy", "value": "Education" }
+      { "label": "MAC Academy", "value": "Training" }
     ]
   },
   "faq": {

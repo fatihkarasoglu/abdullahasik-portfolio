@@ -1,4 +1,8 @@
 {
+  "main": {
+    "title": "Abdullah Aşık | Adana Personal Trainer & Online Koçluk",
+    "description": "Hedefine giden yol, doğru planla başlar. Sana özel program, net takip, sürdürülebilir sonuç. Bugün başla."
+  },
   "nav": {
     "about": "Hakkımda",
     "services": "Paketler",
@@ -8,11 +12,11 @@
     "lang": "EN"
   },
   "hero": {
-    "role": "Profesyonel Kişisel Antrenör",
+    "role": "Adana Personal Trainer & Online Fitness Koçu",
     "name": "Abdullah Aşık",
-    "headlineA": "Hedefindeki vücuda",
-    "headlineB": "birlikte ulaşalım.",
-    "sub": "Sana özel program, net takip, sürdürülebilir sonuç. Bugün başla.",
+    "headlineA": "Fiziksel sınırlarını aş,",
+    "headlineB": "hedeflerine bilimle ulaş.",
+    "sub": "Adana MACFit bünyesinde yüz yüze personal training veya dünyanın neresinde olursan ol profesyonel online koçluk ile kalıcı sonuçlar elde et.",
     "primary": "Hemen Başla",
     "secondary": "Paketleri Gör"
   },
@@ -55,15 +59,15 @@
   },
   "about": {
     "kicker": "HAKKIMDA",
-    "titleA": "Disiplin + Bilim",
-    "titleB": "Sürdürülebilir sonuç.",
-    "subtitle": "Hedefin ne olursa olsun; doğru program, doğru takip ve doğru alışkanlıklarla ilerliyoruz.",
-    "body": "2018 yılında Spor Yöneticiliği alanında üniversite eğitimime başladım. 2019 yılından itibaren ise spor sektöründe personal coach olarak çalışmaya başladım. Hem eğitim hayatım boyunca hem de sonrasında sahada aktif olarak yer alarak teorik bilgimi pratikle birleştirme fırsatı buldum. Kariyerim boyunca fitness profesyoneli olarak kendimi geliştirmeye büyük önem verdim. NASM (National Academy of Sports Medicine) ve EREPS (European Register of Exercise Professionals) gibi uluslararası kuruluşlardan çeşitli eğitimler alarak bilgi birikimimi güncel tutmaya çalışıyorum.\n\nSpor bilimindeki gelişmeleri yakından takip ederek danışanlarıma en doğru ve etkili yöntemleri sunmak için öğrenmeye devam ediyorum. 2021 yılından bu yana MAC (Mars Athletic) bünyesinde hizmet veriyor; bireylerin hedeflerine, ihtiyaçlarına ve yaşam tarzlarına özel olarak hazırladığım antrenman programlarıyla onların fiziksel gelişimlerine katkı sağlıyorum. Aynı zamanda motivasyonlarını sürdürebilmeleri ve süreci keyifle yönetebilmeleri için birebir rehberlik yapıyorum. Benim için spor, sadece fiziksel dönüşüm değil; aynı zamanda mental olarak güçlenmenin de temelidir. Bu yüzden amacım, hem bedensel hem de zihinsel olarak güçlü bireyler yetiştirmek ve sektörde sürdürülebilir bir fark yaratmak.",
+    "titleA": "Bilimsel Yaklaşım + Disiplin",
+    "titleB": "Sürdürülebilir Sonuçlar.",
+    "subtitle": "Hedefin ne olursa olsun; profesyonel bir fitness koçu olarak yanındayım. Doğru program, net takip ve sağlam alışkanlıklarla hedefine birlikte yürüyoruz.",
+    "body": "2018 yılında Spor Yöneticiliği alanında başlayan akademik eğitimimi, 2019 yılından itibaren sahada profesyonel personal trainer olarak pratiğe döktüm. Kariyerim boyunca sadece anlık fiziksel değişimleri değil, bilimsel temellere dayalı kalıcı antrenman sistemlerini benimsedim. Bu vizyonla, NASM (National Academy of Sports Medicine) ve EREPS (European Register of Exercise Professionals) gibi uluslararası otorite kabul edilen kurumlardan sertifikasyonlarımı tamamladım.\n\n2021 yılından bu yana Adana MACFit (Mars Athletic) bünyesinde yüz yüze personal training hizmeti veriyor; aynı zamanda geliştirdiğim özel takip sistemiyle Türkiye'nin ve dünyanın dört bir yanındaki danışanlarıma online fitness koçluğu sağlıyorum. Bireylerin anatomisine, postürüne ve yaşam tarzlarına özel hazırladığım kişiselleştirilmiş programlarla sadece bedensel değil, mental olarak da en güçlü versiyonlarına ulaşmalarına rehberlik ediyorum. Amacım, sektörde ezbere dayalı değil, sürdürülebilir bir fark yaratmak.",
     "techniquesTitle": "Antrenman Tekniklerim",
     "techniques": [
       "Kilo Kontrolü (Kilo Alma – Kilo Verme)",
-      "Kuvvet Antrenmanı",
-      "Postür Analizi ve Egzersiz Planlaması",
+      "Kuvvet ve Hipertrofi Antrenmanı",
+      "Postür Analizi ve Düzeltici Egzersiz Planlaması",
       "Kardiyovasküler Antrenman Planlaması"
     ],
     "educationTitle": "Uzmanlık Eğitimlerim",
